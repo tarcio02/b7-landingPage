@@ -9,7 +9,7 @@ export const Container = styled.div`
   overflow: hidden;
   width: 100%;
   height: 240px;
-  margin-top: 32px;
+  /* margin-top: 32px; */
 `;
 
 export const LogosTrack = styled.div`
@@ -23,7 +23,6 @@ export const LogoWrapper = styled.div`
   justify-content: center;
   width: 240px;
   height: 240px;
-  border-radius: 50%;
 
   img {
     /* max-height: 60px; */

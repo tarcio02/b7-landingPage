@@ -5,50 +5,37 @@ export const StylesFormulario = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  position: relative;
   gap: 16px;
   width: 456px;
   border: 1px solid ${theme.colors.borders};
   border-radius: 24px;
-  padding: 24px 40px;
+  padding: 24px 32px;
   background-color: rgba(168, 38, 255, 0.1);
 
   h2 {
     font-size: 28px;
     font-weight: bold;
     line-height: 27px;
-    margin-bottom: 16px;
     span {
       color: ${theme.colors.primary};
-    }
-  }
-
-  p {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    top: 120px;
-    border-radius: 8px;
-    padding: 4px;
-    background: ${theme.colors.buttonColor};
-    span {
-      font-weight: bold;
     }
   }
 
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: start;
     gap: 8px;
     width: 100%;
+
     .input-form {
+      z-index: 1;
       width: 100%;
-      padding: 4px;
+      padding: 12px;
       height: 56px;
       outline: none;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
     }
 
@@ -81,6 +68,22 @@ export const StylesFormulario = styled.div`
       font-weight: bold;
       font-size: 20px;
       letter-spacing: 1px;
+      margin: 0 auto;
     }
+  }
+
+  .error {
+    display: flex;
+    align-items: center;
+    color: #ff4d4f;
+    font-size: 0.9rem;
+    img {
+      width: 14px;
+      margin-right: 4px;
+    }
+  }
+
+  .input-form.error {
+    border: 3px solid #ff4d4f;
   }
 `;
