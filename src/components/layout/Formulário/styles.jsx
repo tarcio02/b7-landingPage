@@ -6,14 +6,14 @@ export const StylesFormulario = styled.div`
   flex-direction: column;
   text-align: center;
   gap: 16px;
-  width: 456px;
+  width: 450px;
   border: 1px solid ${theme.colors.borders};
   border-radius: 24px;
   padding: 24px 32px;
   background-color: rgba(168, 38, 255, 0.1);
 
   h2 {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     line-height: 27px;
     span {
@@ -35,7 +35,7 @@ export const StylesFormulario = styled.div`
       height: 56px;
       outline: none;
       border-radius: 8px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
     }
 
@@ -94,5 +94,27 @@ export const StylesFormulario = styled.div`
     top: -120px;
     opacity: 0.3;
     width: 900px;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 24px 16px;
+    margin-top: 40px;
+    box-sizing: border-box;
+
+    form {
+      .inputs {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .luz {
+      width: 100%;
+      top: -80px;
+    }
   }
 `;

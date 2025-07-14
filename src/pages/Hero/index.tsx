@@ -4,7 +4,7 @@ import instagram from "../../assets/icons/instagram.png";
 import lampada from "../../assets/images/lampada.png";
 import luz from "../../assets/images/luz.png";
 
-const Hero = () => {
+const Hero = ({ scrollToContato }) => {
   return (
     <StylesHero>
       <img className="luz left" src={luz} alt="efeito de luz" />
@@ -20,7 +20,14 @@ const Hero = () => {
             que conecta estratégia, criatividade e vendas para negócios locais
             crescerem de verdade.
           </p>
-          <button>Quero Vender Mais!</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToContato();
+            }}
+          >
+            Quero Vender Mais!
+          </button>
         </div>
         <div className="botton">
           <p>

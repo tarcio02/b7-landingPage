@@ -9,6 +9,9 @@ export const Container = styled.div`
   overflow: hidden;
   width: 100%;
   height: 200px;
+  @media (max-width: 480px) {
+    height: 120px;
+  }
 `;
 
 export const LogosTrack = styled.div`
@@ -25,6 +28,11 @@ export const LogoWrapper = styled.div`
 
   img {
     width: 200px;
+  }
+
+  @media (max-width: 480px) {
+    width: 200px;
+    height: 120px;
   }
 `;
 

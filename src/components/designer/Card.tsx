@@ -10,6 +10,9 @@ const StylesCard = styled.div`
   z-index: 0;
   border-radius: 100px;
   background-color: rgba(168, 38, 255, 0.1);
+
+  @media (max-width: 480px) {
+  }
 `;
 
 const Card = () => {

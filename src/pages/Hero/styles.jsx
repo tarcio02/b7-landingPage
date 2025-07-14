@@ -8,6 +8,7 @@ export const StylesHero = styled.div`
   position: relative;
   border-bottom: 1px solid ${theme.colors.primary};
   overflow: hidden;
+  padding-bottom: 16px;
 
   .luz {
     position: absolute;
@@ -60,6 +61,7 @@ export const StylesHero = styled.div`
         color: ${theme.colors.texto};
         border-radius: 8px;
         letter-spacing: 1px;
+        cursor: pointer;
       }
     }
 
@@ -104,5 +106,64 @@ export const StylesHero = styled.div`
     right: -19px;
     bottom: -88px;
     transform: rotate(-10deg);
+  }
+
+  @media (max-width: 768px) {
+    .texto {
+      .top {
+        h2 {
+          font-size: 32px;
+          line-height: 34px;
+          letter-spacing: 1px;
+        }
+        p {
+          font-size: 14px;
+        }
+
+        button {
+          width: 180px;
+          font-size: 16px;
+          padding: 8px;
+        }
+      }
+
+      .botton {
+        p {
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    text-align: center;
+
+    .texto {
+      align-items: center;
+      gap: 32px;
+
+      .top {
+        button {
+          margin: 0 auto;
+        }
+      }
+    }
+
+    .botton {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .lampada {
+      margin: 46px 0px;
+      img {
+        width: 80%;
+      }
+    }
   }
 `;

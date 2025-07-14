@@ -23,4 +23,11 @@ export const StylesCardContato = styled.div`
       color: ${theme.colors.primary};
     }
   }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 24px 16px;
+    margin-top: 40px;
+    box-sizing: border-box;
+  }
 `;

@@ -42,6 +42,9 @@ export const StylesFooter = styled.div`
         a {
           text-decoration: none;
           color: white;
+          &:hover {
+            color: gray;
+          }
         }
       }
     }
@@ -53,5 +56,21 @@ export const StylesFooter = styled.div`
     justify-content: center;
     gap: 4px;
     padding-top: 32px;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      flex-direction: column;
+      text-align: center;
+      gap: 16px;
+
+      .links-box {
+        gap: 24px;
+
+        .links {
+          width: 120px;
+        }
+      }
+    }
   }
 `;

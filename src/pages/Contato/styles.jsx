@@ -25,7 +25,7 @@ export const StylesContato = styled.div`
 
     .texto-pai {
       width: 448px;
-      margin-bottom: 80px;
+      margin-bottom: 24px;
       h3 {
         color: ${theme.colors.primary};
         font-size: 32px;
@@ -62,6 +62,16 @@ export const StylesContato = styled.div`
       display: flex;
       flex-direction: column;
       gap: 32px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+
+    .explicacao {
+      .cards {
+        gap: 8px;
+      }
     }
   }
 `;

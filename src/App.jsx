@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import Header from "./components/layout/Header";
 import Contato from "./pages/Contato";
 import Hero from "./pages/Hero";
@@ -7,14 +8,23 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import Card from "./components/designer/Card";
 
 function App() {
+  const contatoRef = useRef(null);
   return (
     <>
       <GlobalStyles />
-      <Header />
+      <Header
+        scrollToContato={() =>
+          contatoRef.current?.scrollIntoView({ behavior: "smooth" })
+        }
+      />
+      <Hero
+        scrollToContato={() =>
+          contatoRef.current?.scrollIntoView({ behavior: "smooth" })
+        }
+      />
       <Card />
-      <Hero />
       <Marcas />
-      <Contato />
+      <Contato ref={contatoRef} />
       <Footer />
     </>
   );

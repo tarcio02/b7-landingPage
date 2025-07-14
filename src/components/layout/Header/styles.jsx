@@ -2,14 +2,22 @@ import styled from "styled-components";
 import { theme } from "../../../styles/theme";
 
 export const StylesHeader = styled.div`
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  padding: 40px 40px;
+  align-items: center;
+  padding: 40px;
 
   .logo {
     img {
       width: 168px;
     }
+  }
+
+  .nav {
+    display: flex;
+    gap: 42px;
   }
 
   ul {
@@ -19,12 +27,18 @@ export const StylesHeader = styled.div`
     list-style: none;
     font-size: 16px;
     font-weight: 200;
+
     li {
-      cursor: pointer;
+      a {
+        z-index: 1;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+      }
     }
   }
 
-  button {
+  .button {
     background: ${theme.colors.buttonColor};
     width: 272px;
     border-radius: 8px;
@@ -36,5 +50,31 @@ export const StylesHeader = styled.div`
     border: 1px solid ${theme.colors.borders};
     letter-spacing: 1px;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      img {
+        width: 120px;
+      }
+    }
+
+    .nav {
+      gap: 16px;
+
+      .button {
+        width: 160px;
+        font-size: 14px;
+        padding: 8px;
+        height: 48px;
+      }
+    }
   }
 `;
