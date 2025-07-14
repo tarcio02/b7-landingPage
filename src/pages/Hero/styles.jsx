@@ -4,8 +4,10 @@ import { theme } from "../../styles/theme";
 export const StylesHero = styled.div`
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  padding: 3px 40px;
   position: relative;
+  border-bottom: 1px solid ${theme.colors.primary};
+  overflow: hidden;
 
   .luz {
     position: absolute;
@@ -92,5 +94,15 @@ export const StylesHero = styled.div`
     img {
       width: 536px;
     }
+  }
+
+  .detalhe {
+    position: absolute;
+    background-color: ${theme.colors.primary};
+    width: 280px;
+    height: 100px;
+    right: -19px;
+    bottom: -88px;
+    transform: rotate(-10deg);
   }
 `;

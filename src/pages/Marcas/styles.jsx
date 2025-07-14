@@ -8,8 +8,7 @@ const scroll = keyframes`
 export const Container = styled.div`
   overflow: hidden;
   width: 100%;
-  height: 240px;
-  /* margin-top: 32px; */
+  height: 200px;
 `;
 
 export const LogosTrack = styled.div`
@@ -21,11 +20,10 @@ export const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 240px;
-  height: 240px;
+  width: 280px;
+  height: 200px;
 
   img {
-    /* max-height: 60px; */
     width: 200px;
   }
 `;

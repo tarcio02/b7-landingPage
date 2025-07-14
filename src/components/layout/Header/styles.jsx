@@ -4,7 +4,7 @@ import { theme } from "../../../styles/theme";
 export const StylesHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 32px;
+  padding: 40px 40px;
 
   .logo {
     img {

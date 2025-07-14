@@ -1,6 +1,7 @@
 import { StylesFormulario } from "./styles";
 import { useState } from "react";
 import alert from "../../../assets/icons/alerta.png";
+import luz from "../../../assets/images/luz.png";
 
 const Formulario = () => {
   const [formData, setFormData] = useState({
@@ -230,6 +231,7 @@ const Formulario = () => {
         )}
         <button type="submit">Enviar para Analise</button>
       </form>
+      <img className="luz left" src={luz} alt="efeito de luz" />
     </StylesFormulario>
   );
 };

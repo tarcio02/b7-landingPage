@@ -86,4 +86,13 @@ export const StylesFormulario = styled.div`
   .input-form.error {
     border: 3px solid #ff4d4f;
   }
+
+  .luz {
+    position: absolute;
+    z-index: 0;
+    right: 0px;
+    top: -120px;
+    opacity: 0.3;
+    width: 900px;
+  }
 `;

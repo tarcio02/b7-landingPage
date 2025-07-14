@@ -1,11 +1,24 @@
 import { Container, LogosTrack, LogoWrapper, DuplicatedTrack } from "./styles";
-import atacadaoE from "../../assets/images/atacadaodoesporte.png";
 import ecopower from "../../assets/images/ecopower.png";
 import rizodent from "../../assets/images/rizodent.png";
 import sadia from "../../assets/images/sadia.png";
+import atacadaodoe from "../../assets/images/atacadaodoe.png";
+import lemont from "../../assets/images/lemont.png";
+import viaarea from "../../assets/images/viaaerea.png";
+import odontocompany from "../../assets/images/odontocompany.png";
+import protemax from "../../assets/images/protemax.png";
 
 const Marcas = () => {
-  const logos = [atacadaoE, ecopower, rizodent, sadia];
+  const logos = [
+    ecopower,
+    rizodent,
+    sadia,
+    atacadaodoe,
+    lemont,
+    viaarea,
+    odontocompany,
+    protemax,
+  ];
 
   return (
     <Container>

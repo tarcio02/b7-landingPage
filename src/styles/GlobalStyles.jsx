@@ -12,6 +12,6 @@ export const GlobalStyles = createGlobalStyle`
       color: ${theme.colors.texto};
       font-family: ${theme.fonts.main};
       background-color: ${theme.colors.secondary};
-      padding: 32px 76px;
+      /* padding: 32px 76px; */
     }
 `;

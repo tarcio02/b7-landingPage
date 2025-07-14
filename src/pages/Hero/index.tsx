@@ -2,14 +2,12 @@ import { StylesHero } from "./styles";
 import facebook from "../../assets/icons/facebook.png";
 import instagram from "../../assets/icons/instagram.png";
 import lampada from "../../assets/images/lampada.png";
-import Card from "../../components/designer/Card";
-// import luz from "../../assets/images/luz.png";
+import luz from "../../assets/images/luz.png";
 
 const Hero = () => {
   return (
     <StylesHero>
-      <Card />
-      {/* <img className="luz left" src={luz} alt="efeito de luz" /> */}
+      <img className="luz left" src={luz} alt="efeito de luz" />
       <div className="texto">
         <div className="top">
           <h2>
@@ -41,6 +39,7 @@ const Hero = () => {
       <div className="lampada">
         <img src={lampada} alt="" />
       </div>
+      <div className="detalhe"></div>
     </StylesHero>
   );
 };

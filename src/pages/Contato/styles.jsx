@@ -4,17 +4,20 @@ import { theme } from "../../styles/theme";
 export const StylesContato = styled.div`
   display: flex;
   justify-content: space-around;
-  border: 1px solid ${theme.colors.primary};
-  padding: 32px;
+  border-top: 1px solid ${theme.colors.primary};
+  border-top: 1px solid ${theme.colors.primary};
+  padding: 48px;
+  overflow: hidden;
   position: relative;
 
   .detalhe {
     position: absolute;
     background-color: ${theme.colors.primary};
-    width: 180px;
+    width: 280px;
     height: 100px;
-    left: 0px;
-    top: -90px;
+    left: -19px;
+    top: -88px;
+    transform: rotate(-10deg);
   }
 
   .explicacao {
