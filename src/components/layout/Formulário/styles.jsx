@@ -32,10 +32,10 @@ export const StylesFormulario = styled.div`
       z-index: 1;
       width: 100%;
       padding: 12px;
-      height: 56px;
+      height: 48px;
       outline: none;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
     }
 
