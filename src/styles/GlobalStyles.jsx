@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
   html {
-    scroll-padding-top: 80px; 
+    scroll-padding-top: 200px; 
     scroll-behavior: smooth;
   }
 
@@ -18,5 +18,6 @@ export const GlobalStyles = createGlobalStyle`
       color: ${theme.colors.texto};
       font-family: ${theme.fonts.main};
       background-color: ${theme.colors.secondary};
+      width: 100%;
     }
 `;

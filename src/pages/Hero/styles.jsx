@@ -8,7 +8,7 @@ export const StylesHero = styled.div`
   position: relative;
   border-bottom: 1px solid ${theme.colors.primary};
   overflow: hidden;
-  padding-bottom: 16px;
+  padding-bottom: 0px;
 
   .luz {
     position: absolute;
@@ -59,7 +59,7 @@ export const StylesHero = styled.div`
         background: ${theme.colors.buttonColor};
         border: 1px solid ${theme.colors.borders};
         color: ${theme.colors.texto};
-        border-radius: 8px;
+        border-radius: 24px;
         letter-spacing: 1px;
         cursor: pointer;
       }
@@ -137,30 +137,48 @@ export const StylesHero = styled.div`
 
   @media (max-width: 480px) {
     flex-direction: column;
-    text-align: center;
+    text-align: start;
+
+    .luz {
+      display: none;
+    }
 
     .texto {
       align-items: center;
       gap: 32px;
-
       .top {
+        p {
+          font-size: 15px;
+        }
         button {
-          margin: 0 auto;
+          width: 100%;
+          height: 56px;
+          font-size: 24px;
+        }
+      }
+
+      .botton {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        p {
+          margin-bottom: 8px;
+        }
+
+        .sociais {
+          gap: 16px;
         }
       }
     }
 
-    .botton {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
     .lampada {
-      margin: 46px 0px;
+      margin: 32px 0px;
+      display: flex;
+      justify-content: center;
       img {
         width: 80%;
       }

@@ -65,6 +65,7 @@ export const StylesFooter = styled.div`
       gap: 16px;
 
       .links-box {
+        display: none;
         gap: 24px;
 
         .links {

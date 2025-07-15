@@ -2,12 +2,6 @@ import { StylesHeader } from "./styles";
 import logo from "../../../assets/images/logo.png";
 
 const Header = ({ scrollToContato }) => {
-  const mensagem = encodeURIComponent(
-    "Olá! Vim do site, quero agendar uma reunião personalizada."
-  );
-  const numero = "5577981223827"; // Substitua pelo seu número
-  const link = `https://wa.me/${numero}?text=${mensagem}`;
-
   return (
     <StylesHeader>
       <div className="logo">
@@ -29,9 +23,11 @@ const Header = ({ scrollToContato }) => {
         </ul>
         <a
           className="button"
-          href={link}
-          target="_blank"
-          rel="noopener norefrrer"
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToContato();
+          }}
         >
           Agendar Uma Reunião
         </a>

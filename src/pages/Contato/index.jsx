@@ -17,7 +17,6 @@ const Contato = forwardRef((props, ref) => {
               É o que você precisa para dar o
               <div className="span">
                 <span>primerio passo.</span>
-                <span className="sublinhado"></span>
               </div>
             </p>
           </div>

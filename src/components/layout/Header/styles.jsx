@@ -7,7 +7,7 @@ export const StylesHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px;
+  padding: 48px;
 
   .logo {
     img {
@@ -56,9 +56,10 @@ export const StylesHeader = styled.div`
 
   @media (max-width: 480px) {
     width: 100%;
-    padding: 16px;
+    padding: 24px 40px;
     align-items: center;
     justify-content: space-between;
+    margin-top: 24px;
 
     .logo {
       img {
@@ -76,5 +77,9 @@ export const StylesHeader = styled.div`
         height: 48px;
       }
     }
+  }
+
+  ul {
+    display: none;
   }
 `;

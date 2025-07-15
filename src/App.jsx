@@ -22,7 +22,7 @@ function App() {
           contatoRef.current?.scrollIntoView({ behavior: "smooth" })
         }
       />
-      <Card />
+      {/* <Card /> */}
       <Marcas />
       <Contato ref={contatoRef} />
       <Footer />
