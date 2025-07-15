@@ -13,12 +13,12 @@ const Contato = forwardRef((props, ref) => {
         <div className="explicacao">
           <div className="texto-pai">
             <h3>APENAS 4 CLIQUES</h3>
-            <p className="paragrafo">
+            <div className="paragrafo">
               É o que você precisa para dar o
               <div className="span">
                 <span>primerio passo.</span>
               </div>
-            </p>
+            </div>
           </div>
           <div className="cards">
             <CardContato

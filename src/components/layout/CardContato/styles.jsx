@@ -11,12 +11,13 @@ export const StylesCardContato = styled.div`
   .imagem {
     border-right: 1px solid ${theme.colors.primary};
     img {
-      width: 80px;
+      width: 100px;
+      margin-right: 4px;
     }
   }
 
   .texto {
-    margin-left: 16px;
+    margin-left: 20px;
     h3 {
       font-size: 20px;
       font-weight: bold;

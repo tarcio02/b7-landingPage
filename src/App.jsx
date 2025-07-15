@@ -6,6 +6,7 @@ import Marcas from "./pages/Marcas";
 import Footer from "./components/layout/Footer";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import Card from "./components/designer/Card";
+import FAQ from "./pages/Faqs";
 
 function App() {
   const contatoRef = useRef(null);
@@ -25,6 +26,7 @@ function App() {
       {/* <Card /> */}
       <Marcas />
       <Contato ref={contatoRef} />
+      <FAQ />
       <Footer />
     </>
   );

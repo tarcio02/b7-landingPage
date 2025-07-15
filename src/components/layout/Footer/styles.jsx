@@ -72,6 +72,15 @@ export const StylesFooter = styled.div`
           width: 120px;
         }
       }
+
+      .sociais {
+        display: flex;
+        gap: 32px;
+
+        img {
+          width: 32px;
+        }
+      }
     }
   }
 `;

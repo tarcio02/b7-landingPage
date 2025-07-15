@@ -114,7 +114,10 @@ export const StylesFormulario = styled.div`
 
     .luz {
       width: 100%;
-      top: -80px;
+      top: -160px;
+      right: 120px;
+      z-index: 0;
+      opacity: 0.2;
     }
   }
 `;

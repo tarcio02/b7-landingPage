@@ -1,5 +1,7 @@
 import { StylesFooter } from "./styles";
 import logob7 from "../../../assets/images/logo.png";
+import instagram from "../../../assets/icons/instagram-rodape.png";
+import whatsapp from "../../../assets/icons/whatsapp-rodape.png";
 
 const Footer = () => {
   return (
@@ -33,6 +35,14 @@ const Footer = () => {
             <a href="#">Trabalhe Conosco</a>
             <a href="#">Anúncios</a>
           </div>
+        </div>
+        <div className="sociais">
+          <a target="blank" href="https://www.instagram.com/b7.agencia/">
+            <img src={instagram} alt="instagram" />
+          </a>
+          <a target="blank" href="https://wa.me/5577981223827">
+            <img src={whatsapp} alt="whatsapp" />
+          </a>
         </div>
       </div>
       <div className="copy">

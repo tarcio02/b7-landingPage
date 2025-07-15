@@ -140,7 +140,7 @@ export const StylesHero = styled.div`
     text-align: start;
 
     .luz {
-      display: none;
+      /* display: none; */
     }
 
     .texto {
@@ -164,6 +164,7 @@ export const StylesHero = styled.div`
         display: flex;
         flex-direction: column;
         gap: 16px;
+        display: none;
 
         p {
           margin-bottom: 8px;

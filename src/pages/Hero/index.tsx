@@ -11,9 +11,9 @@ const Hero = ({ scrollToContato }) => {
       <div className="texto">
         <div className="top">
           <h2>
-            <span className="color">ACELERE AS VENDAS</span> COM{" "}
-            <span className="bold">ESTRATÉGIAS</span> QUE{" "}
-            <span className="bold">FUNCIONAM</span>
+            <span className="color">Tenha Resultados</span> em até
+            <span className="bold"> 90 DIAS</span> com o Método
+            <span className="bold"> B7-3X </span>{" "}
           </h2>
           <p>
             Do tráfego pago ao atendimento automatizado com IA. Somos a agência
