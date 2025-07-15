@@ -73,8 +73,9 @@ export const StylesHeader = styled.div`
       .button {
         width: 160px;
         font-size: 14px;
-        padding: 8px;
-        height: 48px;
+        padding: 4px;
+        display: flex;
+        align-items: center;
       }
     }
   }

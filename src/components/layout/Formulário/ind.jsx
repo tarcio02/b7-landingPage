@@ -1,4 +1,3 @@
-
 import { StylesFormulario } from "./styles";
 import { useState } from "react";
 import alert from "../../../assets/icons/alerta.png";
@@ -19,20 +18,6 @@ const Formulario = () => {
   });
 
   const [errors, setErrors] = useState({});
-
-  const formatarWhatsapp = (value) => {
-    const numeros = value.replace(/\D/g, '');
-
-    if (numeros.length <= 2) {
-      return `(${numeros}`;
-    } else if (numeros.length <= 7) {
-      return `(${numeros.slice(0, 2)}) ${numeros.slice(2)}`;
-    } else if (numeros.length <= 11) {
-      return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7)}`;
-    } else {
-      return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7, 11)}`;
-    }
-  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -61,11 +46,9 @@ const Formulario = () => {
         autor: undefined,
       }));
     } else {
-      const newValue = name === 'whatsapp' ? formatarWhatsapp(value) : value;
-
       setFormData((prevFormData) => ({
         ...prevFormData,
-        [name]: newValue,
+        [name]: value,
       }));
     }
   };
@@ -85,7 +68,7 @@ const Formulario = () => {
     if (!colaboradores)
       newErrors.colaboradores = "Informe a quantidade de colaborades.";
     if (!whatsapp) newErrors.whatsapp = "Whatsapp é obrigatório.";
-    else if (!/^\d{9,}$/.test(whatsapp.replace(/\D/g, ''))) {
+    else if (!/^\d{9,}$/.test(whatsapp)) {
       newErrors.whatsapp = "Número de whats inválido";
     }
 
@@ -99,11 +82,6 @@ const Formulario = () => {
     if (Object.keys(newErrors).length > 0) return;
 
     try {
-      const payload = {
-        ...formData,
-        whatsapp: formData.whatsapp.replace(/\D/g, '') // remove máscara para envio
-      };
-
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbwM01umId2iaC6pR3dCa11z5T1zi0TaoRCQpCrgHqfjRf_SaIyrqHY2dfzeNtqZd7Xe/exec",
         {
@@ -111,7 +89,7 @@ const Formulario = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(payload),
+          body: JSON.stringify(formData),
         }
       );
 
@@ -189,7 +167,7 @@ const Formulario = () => {
         <input
           className={`input-form ${errors.whatsapp ? "error" : ""}`}
           type="text"
-          placeholder="Qual o seu número de Whatsapp?"
+          placeholder="Qual o se numéro de Whatsapp?"
           name="whatsapp"
           value={formData.whatsapp}
           onChange={handleChange}
@@ -251,7 +229,7 @@ const Formulario = () => {
             {errors.autor}
           </p>
         )}
-        <button type="submit">Enviar para Análise</button>
+        <button type="submit">Enviar para Analise</button>
       </form>
       <img className="luz left" src={luz} alt="efeito de luz" />
     </StylesFormulario>

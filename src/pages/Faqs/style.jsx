@@ -27,14 +27,14 @@ export const FAQContainer = styled.div`
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 40px;
   border-top: 1px solid ${theme.colors.primary};
 `;
 
 export const Question = styled.div`
   background: ${theme.colors.buttonColor};
   padding: 15px 20px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   border-radius: 8px;
   cursor: pointer;
   display: flex;

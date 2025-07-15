@@ -151,9 +151,10 @@ export const StylesHero = styled.div`
           font-size: 15px;
         }
         button {
-          width: 100%;
-          height: 56px;
-          font-size: 24px;
+          width: 80%;
+          height: 48px;
+          font-size: 20px;
+          margin: 0 auto;
         }
       }
 

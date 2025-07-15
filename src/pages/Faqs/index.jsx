@@ -36,7 +36,7 @@ const FAQ = () => {
         "3. Criação de vídeos e artes profissionais",
         "4. Gestão de tráfego pago (Instagram, Facebook, TikTok e Google)",
         "5. Integração com CRM e atendimento com IA",
-        "5. Relatórios, acompanhamento quinzenal e suporte via WhatsApp",
+        "6. Relatórios, acompanhamento quinzenal e suporte via WhatsApp",
       ],
     },
     {
