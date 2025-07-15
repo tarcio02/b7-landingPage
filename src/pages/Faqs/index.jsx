@@ -6,7 +6,7 @@ import {
   Answer,
   Icon,
   Titulo,
-} from "./Style";
+} from "./style";
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
