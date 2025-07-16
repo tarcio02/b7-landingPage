@@ -9,9 +9,9 @@ const Chat = ({ onClose }) => {
   const [fechando, setFechando] = useState(false);
 
   const mensagensSugeridas = [
-    "Quero um vídeo profissional!",
-    "Quero saber mais sobre os pacotes",
-    "Preciso de um orçamento personalizado",
+    "Quero saber mais sobre o método B7-3X.",
+    "Como o método 3X pode alavancar os meus resultados?",
+    "Quero agendar uma reunião.",
   ];
 
   const fecharComAnimacao = () => {
