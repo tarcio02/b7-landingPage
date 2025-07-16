@@ -1,7 +1,6 @@
-
 import { StylesFormulario } from "./styles";
 import { useState } from "react";
-import alert from "../../../assets/icons/alerta.png";
+import alertIcon from "../../../assets/icons/alerta.png";
 import luz from "../../../assets/images/luz.png";
 
 const Formulario = () => {
@@ -21,7 +20,7 @@ const Formulario = () => {
   const [errors, setErrors] = useState({});
 
   const formatarWhatsapp = (value) => {
-    const numeros = value.replace(/\D/g, '');
+    const numeros = value.replace(/\D/g, "");
 
     if (numeros.length <= 2) {
       return `(${numeros}`;
@@ -61,7 +60,7 @@ const Formulario = () => {
         autor: undefined,
       }));
     } else {
-      const newValue = name === 'whatsapp' ? formatarWhatsapp(value) : value;
+      const newValue = name === "whatsapp" ? formatarWhatsapp(value) : value;
 
       setFormData((prevFormData) => ({
         ...prevFormData,
@@ -85,7 +84,7 @@ const Formulario = () => {
     if (!colaboradores)
       newErrors.colaboradores = "Informe a quantidade de colaborades.";
     if (!whatsapp) newErrors.whatsapp = "Whatsapp é obrigatório.";
-    else if (!/^\d{9,}$/.test(whatsapp.replace(/\D/g, ''))) {
+    else if (!/^\d{9,}$/.test(whatsapp.replace(/\D/g, ""))) {
       newErrors.whatsapp = "Número de whats inválido";
     }
 
@@ -101,7 +100,7 @@ const Formulario = () => {
     try {
       const payload = {
         ...formData,
-        whatsapp: formData.whatsapp.replace(/\D/g, '') // remove máscara para envio
+        whatsapp: formData.whatsapp.replace(/\D/g, ""), // remove máscara para envio
       };
 
       const response = await fetch(
@@ -109,7 +108,7 @@ const Formulario = () => {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
           },
           body: JSON.stringify(payload),
         }
@@ -154,7 +153,7 @@ const Formulario = () => {
         />
         {errors.nome && (
           <p className="error">
-            <img src={alert} alt="verifique os dados preenchidos" />
+            <img src={alertIcon} alt="verifique os dados preenchidos" />
             {errors.nome}
           </p>
         )}
@@ -168,7 +167,7 @@ const Formulario = () => {
         />
         {errors.email && (
           <p className="error">
-            <img src={alert} alt="verifique os dados preenchidos" />
+            <img src={alertIcon} alt="verifique os dados preenchidos" />
             {errors.email}
           </p>
         )}
@@ -182,7 +181,7 @@ const Formulario = () => {
         />
         {errors.colaboradores && (
           <p className="error">
-            <img src={alert} alt="verifique os dados preenchidos" />
+            <img src={alertIcon} alt="verifique os dados preenchidos" />
             {errors.colaboradores}
           </p>
         )}
@@ -196,7 +195,7 @@ const Formulario = () => {
         />
         {errors.whatsapp && (
           <p className="error">
-            <img src={alert} alt="verifique os dados preenchidos" />
+            <img src={alertIcon} alt="verifique os dados preenchidos" />
             {errors.whatsapp}
           </p>
         )}

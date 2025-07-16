@@ -5,8 +5,10 @@ import Hero from "./pages/Hero";
 import Marcas from "./pages/Marcas";
 import Footer from "./components/layout/Footer";
 import { GlobalStyles } from "./styles/GlobalStyles";
-import Card from "./components/designer/Card";
 import FAQ from "./pages/Faqs";
+import ChatFlutuante from "./components/ui/ChatFlutuante";
+// import Chat from "./components/layout/Chat";
+// import Card from "./components/designer/Card";
 
 function App() {
   const contatoRef = useRef(null);
@@ -23,11 +25,11 @@ function App() {
           contatoRef.current?.scrollIntoView({ behavior: "smooth" })
         }
       />
-      {/* <Card /> */}
       <Marcas />
       <Contato ref={contatoRef} />
       <FAQ />
       <Footer />
+      <ChatFlutuante />
     </>
   );
 }
