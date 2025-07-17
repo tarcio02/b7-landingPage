@@ -33,7 +33,7 @@ const Chat = ({ onClose }) => {
 
     try {
       const resposta = await fetch(
-        "https://n8n-b7-n8n.97aldx.easypanel.host/webhook/siteb7",
+        "https://n8n-b7-n8n.xxer28.easypanel.host/webhook/b7site",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
