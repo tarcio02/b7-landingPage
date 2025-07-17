@@ -7,12 +7,18 @@ export const RoboFlutuante = styled.div`
   left: -40px;
   width: 100px;
   z-index: 5;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* animação */
+
+  transform: scale(1);
+  opacity: 1;
+
+  &.fechando {
+    opacity: 0;
+    transform: scale(0.95);
+  }
 
   img {
     width: 100%;
-    &.fechando {
-      opacity: 0;
-    }
   }
 `;
 

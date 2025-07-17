@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StylesChat, RoboFlutuante } from "./styles";
 import robo from "../../../assets/icons/robogif.gif";
 
@@ -7,6 +7,8 @@ const Chat = ({ onClose }) => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [fechando, setFechando] = useState(false);
+
+  const mensagensRef = useRef(null); // <-- nova ref
 
   const mensagensSugeridas = [
     "Quero saber mais sobre o método B7-3X.",
@@ -18,7 +20,7 @@ const Chat = ({ onClose }) => {
     setFechando(true);
     setTimeout(() => {
       onClose();
-    }, 300); // tempo igual à animação CSS
+    }, 300);
   };
 
   const enviarMensagem = async () => {
@@ -67,6 +69,12 @@ const Chat = ({ onClose }) => {
     if (e.key === "Enter") enviarMensagem();
   };
 
+  useEffect(() => {
+    if (mensagensRef.current) {
+      mensagensRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [mensagens, loading]);
+
   return (
     <>
       <RoboFlutuante className={fechando ? "fechando" : ""}>
@@ -79,7 +87,7 @@ const Chat = ({ onClose }) => {
           </button>
         </div>
         <div className="mensagens">
-          <div className="mensagem ia"> Olá como posso te ajudar?</div>
+          <div className="mensagem ia">Olá, como posso te ajudar?</div>
           <div className="sugestoes">
             {mensagensSugeridas.map((msg, i) => (
               <button key={i} onClick={() => setInput(msg)}>
@@ -93,6 +101,7 @@ const Chat = ({ onClose }) => {
             </div>
           ))}
           {loading && <div className="mensagem ia">Digitando...</div>}
+          <div ref={mensagensRef} /> {/* <-- marcador final */}
         </div>
         <div className="entrada">
           <input
