@@ -5,7 +5,7 @@ import CardContato from "../../components/layout/CardContato";
 import prancheta from "../../assets/icons/prancheta.png";
 import whatsapp from "../../assets/icons/whatsapp.png";
 
-const Contato = forwardRef((props, ref) => {
+const Contato = forwardRef(({ formularioRef }, ref) => {
   return (
     <StylesContato ref={ref}>
       <div>
@@ -34,7 +34,7 @@ const Contato = forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-      <Formulario />
+      <Formulario ref={formularioRef} />
     </StylesContato>
   );
 });

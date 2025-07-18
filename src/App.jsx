@@ -7,26 +7,32 @@ import Footer from "./components/layout/Footer";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import FAQ from "./pages/Faqs";
 import ChatFlutuante from "./components/ui/ChatFlutuante";
-// import Chat from "./components/layout/Chat";
-// import Card from "./components/designer/Card";
 
 function App() {
   const contatoRef = useRef(null);
+  const formularioRef = useRef(null);
+
   return (
     <>
       <GlobalStyles />
       <Header
         scrollToContato={() =>
-          contatoRef.current?.scrollIntoView({ behavior: "smooth" })
+          formularioRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+          })
         }
       />
       <Hero
         scrollToContato={() =>
-          contatoRef.current?.scrollIntoView({ behavior: "smooth" })
+          formularioRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+          })
         }
       />
       <Marcas />
-      <Contato ref={contatoRef} />
+      <Contato formularioRef={formularioRef} ref={contatoRef} />
       <FAQ />
       <Footer />
       <ChatFlutuante />

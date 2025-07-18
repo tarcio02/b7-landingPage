@@ -11,6 +11,7 @@ export const StylesFormulario = styled.div`
   border-radius: 24px;
   padding: 24px 32px;
   background-color: rgba(168, 38, 255, 0.1);
+  z-index: 999;
 
   h2 {
     font-size: 24px;
@@ -34,6 +35,7 @@ export const StylesFormulario = styled.div`
       padding: 12px;
       height: 48px;
       outline: none;
+      border: none;
       border-radius: 8px;
       font-size: 14px;
       font-weight: bold;
@@ -59,7 +61,7 @@ export const StylesFormulario = styled.div`
     }
 
     button {
-      border: 1px solid ${theme.colors.borders};
+      border: none;
       border-radius: 8px;
       padding: 12px;
       width: 272px;
@@ -69,6 +71,14 @@ export const StylesFormulario = styled.div`
       font-size: 20px;
       letter-spacing: 1px;
       margin: 0 auto;
+      cursor: pointer;
+
+      &:hover,
+      :active,
+      :focus {
+        background: rgba(168, 38, 255, 0.5);
+        color: #dfe4ea;
+      }
     }
   }
 
@@ -89,11 +99,12 @@ export const StylesFormulario = styled.div`
 
   .luz {
     position: absolute;
-    z-index: 0;
+    z-index: -1; /* Faz a luz ir para trás de tudo */
     right: 0px;
     top: -120px;
     opacity: 0.3;
     width: 900px;
+    pointer-events: none; /* Impede que a imagem bloqueie cliques */
   }
 
   @media (max-width: 480px) {

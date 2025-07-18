@@ -1,9 +1,9 @@
 import { StylesFormulario } from "./styles";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import alertIcon from "../../../assets/icons/alerta.png";
 import luz from "../../../assets/images/luz.png";
 
-const Formulario = () => {
+const Formulario = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -142,7 +142,7 @@ const Formulario = () => {
       <h2>
         <span>PREENCHA O FORMULÁRIO </span>E FALE CONOSCO
       </h2>
-      <form onSubmit={handleSubmit}>
+      <form ref={ref} onSubmit={handleSubmit}>
         <input
           className={`input-form ${errors.nome ? "error" : ""}`}
           type="text"
@@ -246,7 +246,7 @@ const Formulario = () => {
         </div>
         {errors.autor && (
           <p className="error">
-            <img src={alert} alt="verifique os dados preenchidos" />
+            <img src={alertIcon} alt="verifique os dados preenchidos" />
             {errors.autor}
           </p>
         )}
@@ -255,6 +255,6 @@ const Formulario = () => {
       <img className="luz left" src={luz} alt="efeito de luz" />
     </StylesFormulario>
   );
-};
+});
 
 export default Formulario;

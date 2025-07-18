@@ -2,16 +2,17 @@ import styled from "styled-components";
 import { theme } from "../../../styles/theme";
 
 export const StylesHeader = styled.div`
-  width: 100%;
-  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 48px;
+  padding: 16px 80px;
+  border-bottom: 1px solid ${theme.colors.primary};
 
   .logo {
+    display: flex;
+    align-items: center;
     img {
-      width: 168px;
+      width: 120px;
     }
   }
 
@@ -34,53 +35,85 @@ export const StylesHeader = styled.div`
         cursor: pointer;
         color: white;
         text-decoration: none;
+        font-weight: bold;
       }
     }
   }
 
   .button {
+    /* Estilos base que você já tinha */
     background: ${theme.colors.buttonColor};
-    width: 272px;
+    width: 180px;
     border-radius: 8px;
-    height: 48px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: ${theme.colors.texto};
-    padding: 16px;
-    border: 1px solid ${theme.colors.borders};
+    padding: 8px;
+    border: none;
     letter-spacing: 1px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-  }
 
-  @media (max-width: 480px) {
-    width: 100%;
-    padding: 24px 40px;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 24px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 
-    .logo {
-      img {
-        width: 120px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(168, 38, 255, 0.5);
+      transition: width 0.4s ease-in-out;
+      z-index: -1;
+
+      &:hover::before {
+        width: 100%;
+      }
+
+      &:hover {
+        color: #dfe4ea;
+      }
+
+      /* Mantém a consistência para os estados de active e focus */
+      &:active,
+      &:focus {
+        background: rgba(168, 38, 255, 0.5);
+        color: #dfe4ea;
       }
     }
 
-    .nav {
-      gap: 16px;
+    @media (max-width: 480px) {
+      width: 100%;
+      padding: 24px 32px;
+      align-items: center;
+      justify-content: space-between;
+
+      .logo {
+        img {
+          width: 120px;
+        }
+      }
+
+      .nav {
+        display: none;
+      }
 
       .button {
         width: 160px;
         font-size: 14px;
         padding: 4px;
         display: flex;
+        display: none;
         align-items: center;
+
+        &:hover {
+          color: black;
+        }
       }
     }
-  }
-
-  ul {
-    display: none;
   }
 `;

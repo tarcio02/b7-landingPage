@@ -7,7 +7,9 @@ export const RoboFlutuante = styled.div`
   left: -40px;
   width: 100px;
   z-index: 5;
-  transition: opacity 0.3s ease, transform 0.3s ease; /* animação */
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease; /* animação */
 
   transform: scale(1);
   opacity: 1;
@@ -73,7 +75,7 @@ export const StylesChat = styled.div`
     /* background: white; */
 
     button {
-      background-color: ${theme.colors.primary};
+      background-color: ${theme.colors.buttonColor};
 
       border: none;
       color: white;

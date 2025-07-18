@@ -4,7 +4,7 @@ import { theme } from "../../styles/theme";
 export const StylesHero = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 3px 40px;
+  padding: 3px 80px;
   position: relative;
   border-bottom: 1px solid ${theme.colors.primary};
   overflow: hidden;
@@ -12,10 +12,11 @@ export const StylesHero = styled.div`
 
   .luz {
     position: absolute;
-    z-index: 0;
+    z-index: -1;
     left: -520px;
     top: -320px;
     opacity: 0.3;
+    pointer-events: none;
   }
 
   .texto {
@@ -52,16 +53,56 @@ export const StylesHero = styled.div`
       }
 
       button {
+  position: relative;
+  overflow: hidden;
+  width: 272px;
+  padding: 16px;
+  font-weight: bold;
+  font-size: 20px;
+  background: #1a1a1a; /* substitua por: ${theme.colors.buttonColor} */
+  border: none;
+  color: #fff; /* substitua por: ${theme.colors.texto} */
+  border-radius: 24px;
+  cursor: pointer;
+  z-index: 0;
+}
+
+/* Efeito de preenchimento da esquerda */
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: #ffd700; /* cor do efeito de hover, substitua se quiser */
+  z-index: -1;
+  border-radius: 24px;
+  transition: width 0.4s ease;
+}
+
+/* Quando passar o mouse, o preenchimento vai até a direita */
+button:hover::before {
+  width: 100%;
+}
+
+/* Opcional: muda a cor do texto durante o hover */
+button:hover {
+  color: #1a1a1a; /* mesmo tom do background original */
+}
+
+      /* button {
         width: 272px;
         padding: 16px;
         font-weight: bold;
         font-size: 20px;
         background: ${theme.colors.buttonColor};
-        border: 1px solid ${theme.colors.borders};
+        border: none;
         color: ${theme.colors.texto};
         border-radius: 24px;
-        letter-spacing: 1px;
         cursor: pointer;
+
+        } */
       }
     }
 
@@ -109,6 +150,7 @@ export const StylesHero = styled.div`
   }
 
   @media (max-width: 768px) {
+    padding: 32px;
     .texto {
       .top {
         h2 {
