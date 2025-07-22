@@ -101,17 +101,19 @@ const Formulario = forwardRef((props, ref) => {
     try {
       const payload = {
         ...formData,
-        whatsapp: formData.whatsapp.replace(/\D/g, ""), // remove máscara para envio
+        whatsapp: formData.whatsapp.replace(/\D/g, ""),
       };
 
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwM01umId2iaC6pR3dCa11z5T1zi0TaoRCQpCrgHqfjRf_SaIyrqHY2dfzeNtqZd7Xe/exec",
+        "https://script.google.com/macros/s/AKfycbyvp-nXUaWp0sSC9y75NFfz5VYVnD8sE-bFrUPfVymnuu_BhTa8nLCpJBffDt6fF5I_/exec",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: JSON.stringify(payload),
+          body: new URLSearchParams({
+            dados: JSON.stringify(payload),
+          }),
         }
       );
 
