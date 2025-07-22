@@ -10,8 +10,8 @@ export const Drawer = styled.div`
   right: ${({ $aberto }) => ($aberto ? "0" : "-100%")};
   width: 80%;
   height: 100vh;
-  /* 2. Use o 'theme' importado diretamente */
-  background-color: ${theme.colors.background || "#1e1e1e"};
+  background-color: rgba(30, 30, 30, 0.9);
+  backdrop-filter: blur(18px);
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
@@ -24,29 +24,15 @@ export const Lista = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-bottom: 24px;
   list-style: none;
   margin-top: 48px;
 
   li a {
-    /* 4. Use o 'theme' importado diretamente */
     color: ${theme.colors.texto || "#fff"};
     font-size: 18px;
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
   }
-`;
-
-export const Botao = styled.a`
-  margin-top: 32px;
-  /* 5. Use o 'theme' importado diretamente */
-  background: ${theme.colors.buttonColor || "#ffd700"};
-  color: ${theme.colors.texto || "#fff"};
-  padding: 12px;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
 `;

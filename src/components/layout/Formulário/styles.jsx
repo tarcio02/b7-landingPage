@@ -42,7 +42,6 @@ export const StylesFormulario = styled.div`
     }
 
     .check {
-      text-align: start;
       h3 {
         font-size: 16px;
         margin-bottom: 4px;
@@ -50,7 +49,9 @@ export const StylesFormulario = styled.div`
 
       .inputs {
         display: flex;
-        gap: 8px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
 
         .check-box {
           display: flex;
@@ -107,7 +108,7 @@ export const StylesFormulario = styled.div`
     pointer-events: none; /* Impede que a imagem bloqueie cliques */
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     width: 100%;
     padding: 24px 16px;
     margin-top: 40px;

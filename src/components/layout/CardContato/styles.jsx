@@ -25,6 +25,10 @@ export const StylesCardContato = styled.div`
     }
   }
 
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
   @media (max-width: 480px) {
     width: 100%;
     padding: 24px 16px;

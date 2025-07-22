@@ -58,7 +58,7 @@ export const StylesFooter = styled.div`
     padding-top: 32px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     .container {
       flex-direction: column;
       text-align: center;

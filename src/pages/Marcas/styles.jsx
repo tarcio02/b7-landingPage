@@ -8,7 +8,8 @@ const scroll = keyframes`
 export const Container = styled.div`
   overflow: hidden;
   width: 100%;
-  height: 200px;
+  height: 140px;
+  /* border: 1px solid red; */
   @media (max-width: 480px) {
     height: 120px;
   }
@@ -24,7 +25,7 @@ export const LogoWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 280px;
-  height: 200px;
+  height: 140px;
 
   img {
     width: 200px;

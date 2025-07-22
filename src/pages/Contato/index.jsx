@@ -16,7 +16,7 @@ const Contato = forwardRef(({ formularioRef }, ref) => {
             <div className="paragrafo">
               É o que você precisa para dar o
               <div className="span">
-                <span>primerio passo.</span>
+                <span>primeiro passo.</span>
               </div>
             </div>
           </div>
@@ -24,7 +24,7 @@ const Contato = forwardRef(({ formularioRef }, ref) => {
             <CardContato
               icone={prancheta}
               titulo="ENVIE AS INFORMAÇÕES"
-              texto="Pode ficar tranquilo seus! Seus dados são protegidos e usados apenas para entrarmos em contato com você"
+              texto="Pode ficar tranquilo! Seus dados são protegidos e usados apenas para entrarmos em contato com você"
             />
             <CardContato
               icone={whatsapp}

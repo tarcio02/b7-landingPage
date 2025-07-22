@@ -3,8 +3,10 @@ import logo from "../../../assets/images/logo.png";
 import MenuHamburguer from "../../ui/MenuHamburguer";
 import MenuLateral from "../MenuLateral";
 import { useState } from "react";
+import ButtonForm from "../../ui/ButtonForm";
+import { BotaoDesktop } from "../../ui/ButtonForm/styles";
 
-const Header = ({ scrollToContato }) => {
+const Header = ({ formularioRef }) => {
   const [menuAberto, setMenuAberto] = useState(false);
 
   const toggleMenu = () => {
@@ -19,15 +21,7 @@ const Header = ({ scrollToContato }) => {
       <div className="nav">
         <ul>
           <li>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToContato();
-              }}
-            >
-              Contato
-            </a>
+            <a href="#">Contato</a>
           </li>
           <li>
             <a href="#">Início</a>
@@ -44,20 +38,13 @@ const Header = ({ scrollToContato }) => {
           <li></li>
         </ul>
       </div>
-      <a
-        className="button"
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToContato();
-        }}
-      >
-        Agendar Uma Reunião
-      </a>
+      <BotaoDesktop>
+        <ButtonForm texto="Agendar uma reunião" formularioRef={formularioRef} />
+      </BotaoDesktop>
       <MenuHamburguer menuAberto={menuAberto} toggleMenu={toggleMenu} />
       <MenuLateral
         aberto={menuAberto}
-        scrollToContato={scrollToContato}
+        formularioRef={formularioRef}
         fechar={() => setMenuAberto(false)}
       />
     </StylesHeader>

@@ -15,22 +15,8 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Header
-        scrollToContato={() =>
-          formularioRef.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-          })
-        }
-      />
-      <Hero
-        scrollToContato={() =>
-          formularioRef.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-          })
-        }
-      />
+      <Header formularioRef={formularioRef} />
+      <Hero formularioRef={formularioRef} />
       <Marcas />
       <Contato formularioRef={formularioRef} ref={contatoRef} />
       <FAQ />

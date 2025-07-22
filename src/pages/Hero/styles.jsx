@@ -4,7 +4,7 @@ import { theme } from "../../styles/theme";
 export const StylesHero = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 3px 80px;
+  padding: 48px 80px;
   position: relative;
   border-bottom: 1px solid ${theme.colors.primary};
   overflow: hidden;
@@ -23,7 +23,7 @@ export const StylesHero = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 16px;
-    gap: 72px;
+    gap: 56px;
     max-width: 640px;
     z-index: 1;
 
@@ -51,83 +51,29 @@ export const StylesHero = styled.div`
         line-height: 150%;
         font-size: 16px;
       }
+    }
+  }
 
-      button {
-  position: relative;
-  overflow: hidden;
-  width: 272px;
-  padding: 16px;
-  font-weight: bold;
-  font-size: 20px;
-  background: #1a1a1a; /* substitua por: ${theme.colors.buttonColor} */
-  border: none;
-  color: #fff; /* substitua por: ${theme.colors.texto} */
-  border-radius: 24px;
-  cursor: pointer;
-  z-index: 0;
-}
-
-/* Efeito de preenchimento da esquerda */
-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  background: #ffd700; /* cor do efeito de hover, substitua se quiser */
-  z-index: -1;
-  border-radius: 24px;
-  transition: width 0.4s ease;
-}
-
-/* Quando passar o mouse, o preenchimento vai até a direita */
-button:hover::before {
-  width: 100%;
-}
-
-/* Opcional: muda a cor do texto durante o hover */
-button:hover {
-  color: #1a1a1a; /* mesmo tom do background original */
-}
-
-      /* button {
-        width: 272px;
-        padding: 16px;
+  .botton {
+    p {
+      font-size: 16px;
+      span {
         font-weight: bold;
-        font-size: 20px;
-        background: ${theme.colors.buttonColor};
-        border: none;
-        color: ${theme.colors.texto};
-        border-radius: 24px;
-        cursor: pointer;
-
-        } */
       }
     }
-
-    .botton {
-      p {
-        font-size: 16px;
-        margin-bottom: 16px;
-        span {
-          font-weight: bold;
-        }
-      }
-      .sociais {
+    .sociais {
+      display: flex;
+      gap: 32px;
+      a {
         display: flex;
-        gap: 32px;
-        a {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          border: 2px solid rgba(168, 38, 255, 0.2);
-          width: 48px;
-          height: 48px;
-          img {
-            width: 24px;
-          }
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 2px solid rgba(168, 38, 255, 0.2);
+        width: 48px;
+        height: 48px;
+        img {
+          width: 24px;
         }
       }
     }
@@ -135,7 +81,7 @@ button:hover {
 
   .lampada {
     img {
-      width: 536px;
+      width: 480px;
     }
   }
 
@@ -177,7 +123,7 @@ button:hover {
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     flex-direction: column;
     text-align: start;
 

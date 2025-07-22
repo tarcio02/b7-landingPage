@@ -3,8 +3,9 @@ import facebook from "../../assets/icons/facebook.png";
 import instagram from "../../assets/icons/instagram.png";
 import lampada from "../../assets/images/lampada.png";
 import luz from "../../assets/images/luz.png";
+import ButtonForm from "../../components/ui/ButtonForm";
 
-const Hero = ({ scrollToContato }) => {
+const Hero = ({ formularioRef }) => {
   return (
     <StylesHero>
       <img className="luz left" src={luz} alt="efeito de luz" />
@@ -20,14 +21,11 @@ const Hero = ({ scrollToContato }) => {
             que conecta estratégia, criatividade e vendas para negócios locais
             crescerem de verdade.
           </p>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToContato();
-            }}
-          >
-            Quero Vender Mais!
-          </button>
+          <ButtonForm
+            texto="Quero vender mais"
+            formularioRef={formularioRef}
+            fecharMenu={() => {}}
+          />
         </div>
         <div className="botton">
           <p>

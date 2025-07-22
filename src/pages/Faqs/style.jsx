@@ -50,12 +50,29 @@ export const QuestionText = styled.span`
 
 export const Answer = styled.div`
   background: black;
-  padding: 15px 20px;
+  padding: 0 20px;
   margin-bottom: 10px;
   border: 1px solid #dee2e6;
   border-radius: 8px;
   line-height: 24px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease,
+    padding 0.4s ease;
+`;
+
+export const AnswerWrapper = styled.div`
+  &.aberto {
+    ${Answer} {
+      max-height: 500px; /* alto o suficiente para sua resposta */
+      opacity: 1;
+      padding: 15px 20px;
+    }
+  }
 `;
 
 export const Icon = styled.span`

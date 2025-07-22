@@ -4,6 +4,7 @@ import {
   Question,
   QuestionText,
   Answer,
+  AnswerWrapper,
   Icon,
   Titulo,
 } from "./style";
@@ -89,13 +90,13 @@ const FAQ = () => {
             <QuestionText>{item.question}</QuestionText>
             <Icon $isOpen={openIndex === index}>▼</Icon>
           </Question>
-          {openIndex === index && (
+          <AnswerWrapper className={openIndex === index ? "aberto" : ""}>
             <Answer>
               {item.answer.map((paragrafo, idx) => (
                 <p key={idx}>{paragrafo}</p>
               ))}
             </Answer>
-          )}
+          </AnswerWrapper>
         </div>
       ))}
     </FAQContainer>

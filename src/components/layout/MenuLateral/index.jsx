@@ -1,6 +1,8 @@
-import { Drawer, Lista, Botao } from "./styles";
+import ButtonForm from "../../ui/ButtonForm";
+import { Drawer, Lista } from "./styles";
+import { BotaoMobile } from "../../ui/ButtonForm/styles";
 
-const MenuLateral = ({ aberto }) => {
+const MenuLateral = ({ aberto, formularioRef, fechar }) => {
   return (
     <Drawer $aberto={aberto}>
       <Lista>
@@ -17,29 +19,16 @@ const MenuLateral = ({ aberto }) => {
           <a href="#">Resultados</a>
         </li>
         <li>
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToContato();
-              fechar();
-            }}
-          >
-            Contato
-          </a>
+          <a href="#">Contato</a>
         </li>
       </Lista>
-
-      <Botao
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToContato();
-          fechar();
-        }}
-      >
-        Agendar Uma Reunião
-      </Botao>
+      <BotaoMobile>
+        <ButtonForm
+          texto="Agendar uma reunião"
+          formularioRef={formularioRef}
+          fecharMenu={fechar}
+        />
+      </BotaoMobile>
     </Drawer>
   );
 };

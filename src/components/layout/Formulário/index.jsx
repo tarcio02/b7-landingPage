@@ -9,6 +9,7 @@ const Formulario = forwardRef((props, ref) => {
     email: "",
     colaboradores: "",
     whatsapp: "",
+    area: "",
     autor: {
       dono: false,
       administrador: false,
@@ -121,6 +122,7 @@ const Formulario = forwardRef((props, ref) => {
           email: "",
           colaboradores: "",
           whatsapp: "",
+          area: "",
           autor: {
             dono: false,
             administrador: false,
@@ -199,6 +201,14 @@ const Formulario = forwardRef((props, ref) => {
             {errors.whatsapp}
           </p>
         )}
+        <input
+          className="input-form"
+          type="text"
+          placeholder="Área de atuação"
+          name="area"
+          value={formData.area}
+          onChange={handleChange}
+        />
         <div className="check">
           <h3>Selecione abaixo o seu perfil:</h3>
           <div className="inputs">
