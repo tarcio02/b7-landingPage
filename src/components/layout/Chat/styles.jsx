@@ -70,26 +70,10 @@ export const StylesChat = styled.div`
   .sugestoes {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
     gap: 10px;
-    padding: 10px;
-    /* background: white; */
-
-    button {
-      background-color: ${theme.colors.buttonColor};
-
-      border: none;
-      color: white;
-      border-radius: 10px;
-      padding: 8px;
-      font-size: 13px;
-      text-align: left;
-      cursor: pointer;
-      transition: background 0.2s;
-
-      &:hover {
-        background-color: rgba(168, 38, 255, 0.4);
-      }
-    }
+    padding: 16px;
   }
 
   .mensagem {
@@ -134,5 +118,46 @@ export const StylesChat = styled.div`
       border-radius: 8px;
       cursor: pointer;
     }
+  }
+`;
+
+export const ButtonChat = styled.button`
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+  padding: 4px;
+  font-size: 16px;
+  width: 100%;
+  background: ${theme.colors.buttonColor};
+  color: ${theme.colors.texto};
+  border: 1px solid ${theme.colors.primary};
+  border-radius: 16px;
+  cursor: pointer;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: ${theme.colors.texto};
+    z-index: -1;
+    border-radius: 16px;
+    transition: width 0.4s ease;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+
+  &:hover {
+    color: ${theme.colors.primary};
+  }
+
+  &:active {
+    border-radius: 16px;
   }
 `;

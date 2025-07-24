@@ -2,11 +2,14 @@ import { StylesFormulario } from "./styles";
 import { forwardRef, useState } from "react";
 import alertIcon from "../../../assets/icons/alerta.png";
 import luz from "../../../assets/images/luz.png";
+import Spinner from "../../designer/Spinner";
+import ModalApi from "../ModalApi";
 
 const Formulario = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
+    empresa: "",
     colaboradores: "",
     whatsapp: "",
     area: "",
@@ -16,6 +19,14 @@ const Formulario = forwardRef((props, ref) => {
       gerente: false,
       colaborador: false,
     },
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [modalInfo, setModalInfo] = useState({
+    show: false,
+    message: "",
+    isError: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -32,6 +43,10 @@ const Formulario = forwardRef((props, ref) => {
     } else {
       return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7, 11)}`;
     }
+  };
+
+  const showModal = (message, isError = false) => {
+    setModalInfo({ show: true, message, isError });
   };
 
   const handleChange = (e) => {
@@ -73,7 +88,7 @@ const Formulario = forwardRef((props, ref) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { nome, email, colaboradores, whatsapp, autor } = formData;
+    const { nome, email, empresa, colaboradores, whatsapp, autor } = formData;
     const newErrors = {};
 
     if (!nome) newErrors.nome = "Nome é obrigatório.";
@@ -81,6 +96,8 @@ const Formulario = forwardRef((props, ref) => {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s]+$/.test(email)) {
       newErrors.email = "Email inválido";
     }
+
+    if (!empresa) newErrors.empresa = "Nome da empresa é obrigatório.";
 
     if (!colaboradores)
       newErrors.colaboradores = "Informe a quantidade de colaborades.";
@@ -95,8 +112,9 @@ const Formulario = forwardRef((props, ref) => {
     }
 
     setErrors(newErrors);
-
     if (Object.keys(newErrors).length > 0) return;
+
+    setIsLoading(true);
 
     try {
       const payload = {
@@ -105,7 +123,7 @@ const Formulario = forwardRef((props, ref) => {
       };
 
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbyvp-nXUaWp0sSC9y75NFfz5VYVnD8sE-bFrUPfVymnuu_BhTa8nLCpJBffDt6fF5I_/exec",
+        "https://script.google.com/macros/s/AKfycbwBoPFKAtz06qvTnoCjyP_bsDXFIxnV-LTxgOg1MDOwx5crAnPidJ84T3czF4pQMzfHHQ/exec",
         {
           method: "POST",
           headers: {
@@ -118,10 +136,26 @@ const Formulario = forwardRef((props, ref) => {
       );
 
       if (response.ok) {
-        alert("Dados enviados com sucesso");
+        if (typeof fbq === "function") {
+          fbq("track", "Lead");
+        }
+
+        if (typeof window.spdt === "function") {
+          window.spdt("custom_event_1", {
+            nome: formData.nome,
+            email: formData.email,
+            empresa: formData.empresa,
+          });
+          console.log("Spotify custom_event_1 enviado");
+        }
+
+        setIsLoading(false);
+        showModal("Obrigado, em breve entraremos em contato com você.", false);
+
         setFormData({
           nome: "",
           email: "",
+          empresa: "",
           colaboradores: "",
           whatsapp: "",
           area: "",
@@ -134,9 +168,10 @@ const Formulario = forwardRef((props, ref) => {
         });
         setErrors({});
       } else {
-        alert("Erro ao enviar os dados");
+        showModal("Erro ao enviar os dados. Tente novamente.", true);
       }
     } catch (err) {
+      setIsLoading(false);
       console.log(err);
     }
   };
@@ -161,6 +196,22 @@ const Formulario = forwardRef((props, ref) => {
             {errors.nome}
           </p>
         )}
+
+        <input
+          className={`input-form ${errors.empresa ? "error" : ""}`}
+          type="text"
+          placeholder="Nome da empresa"
+          name="empresa"
+          value={formData.empresa}
+          onChange={handleChange}
+        />
+        {errors.empresa && (
+          <p className="error">
+            <img src={alertIcon} alt="verifique os dados preenchidos" />
+            {errors.empresa}
+          </p>
+        )}
+
         <input
           className={`input-form ${errors.email ? "error" : ""}`}
           type="email"
@@ -175,6 +226,7 @@ const Formulario = forwardRef((props, ref) => {
             {errors.email}
           </p>
         )}
+
         <input
           className={`input-form ${errors.colaboradores ? "error" : ""}`}
           type="number"
@@ -214,46 +266,22 @@ const Formulario = forwardRef((props, ref) => {
         <div className="check">
           <h3>Selecione abaixo o seu perfil:</h3>
           <div className="inputs">
-            <div className="check-box">
-              <input
-                type="checkbox"
-                id="administrador"
-                name="administrador"
-                checked={formData.autor.administrador}
-                onChange={handleChange}
-              />
-              <label htmlFor="administrador">Administrador</label>
-            </div>
-            <div className="check-box">
-              <input
-                type="checkbox"
-                id="dono"
-                name="dono"
-                checked={formData.autor.dono}
-                onChange={handleChange}
-              />
-              <label htmlFor="dono">Dono</label>
-            </div>
-            <div className="check-box">
-              <input
-                type="checkbox"
-                id="gerente"
-                name="gerente"
-                checked={formData.autor.gerente}
-                onChange={handleChange}
-              />
-              <label htmlFor="gerente">Gerente</label>
-            </div>
-            <div className="check-box">
-              <input
-                type="checkbox"
-                id="colaborador"
-                name="colaborador"
-                checked={formData.autor.colaborador}
-                onChange={handleChange}
-              />
-              <label htmlFor="colaborador">Colaborador</label>
-            </div>
+            {["administrador", "dono", "gerente", "colaborador"].map(
+              (perfil) => (
+                <div className="check-box" key={perfil}>
+                  <input
+                    type="checkbox"
+                    id={perfil}
+                    name={perfil}
+                    checked={formData.autor[perfil]}
+                    onChange={handleChange}
+                  />
+                  <label htmlFor={perfil}>
+                    {perfil.charAt(0).toUpperCase() + perfil.slice(1)}
+                  </label>
+                </div>
+              )
+            )}
           </div>
         </div>
         {errors.autor && (
@@ -262,9 +290,21 @@ const Formulario = forwardRef((props, ref) => {
             {errors.autor}
           </p>
         )}
-        <button type="submit">Enviar para Análise</button>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <button type="submit">Enviar para Análise</button>
+        )}
       </form>
       <img className="luz left" src={luz} alt="efeito de luz" />
+      <ModalApi
+        show={modalInfo.show}
+        message={modalInfo.message}
+        isError={modalInfo.isError}
+        onClose={() =>
+          setModalInfo({ show: false, message: "", isError: false })
+        }
+      />
     </StylesFormulario>
   );
 });

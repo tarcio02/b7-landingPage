@@ -1,6 +1,4 @@
 import { StylesHero } from "./styles";
-import facebook from "../../assets/icons/facebook.png";
-import instagram from "../../assets/icons/instagram.png";
 import lampada from "../../assets/images/lampada.png";
 import luz from "../../assets/images/luz.png";
 import ButtonForm from "../../components/ui/ButtonForm";
@@ -26,19 +24,6 @@ const Hero = ({ formularioRef }) => {
             formularioRef={formularioRef}
             fecharMenu={() => {}}
           />
-        </div>
-        <div className="botton">
-          <p>
-            <span>Siga a Branding7</span> nas Redes Social
-          </p>
-          <div className="sociais">
-            <a>
-              <img src={facebook} alt="Ir para o facebook" />
-            </a>
-            <a href="">
-              <img src={instagram} alt="Ir para o instagram" />
-            </a>
-          </div>
         </div>
       </div>
       <div className="lampada">

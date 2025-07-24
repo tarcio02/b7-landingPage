@@ -54,31 +54,6 @@ export const StylesHero = styled.div`
     }
   }
 
-  .botton {
-    p {
-      font-size: 16px;
-      span {
-        font-weight: bold;
-      }
-    }
-    .sociais {
-      display: flex;
-      gap: 32px;
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        border: 2px solid rgba(168, 38, 255, 0.2);
-        width: 48px;
-        height: 48px;
-        img {
-          width: 24px;
-        }
-      }
-    }
-  }
-
   .lampada {
     img {
       width: 480px;
@@ -114,22 +89,12 @@ export const StylesHero = styled.div`
           padding: 8px;
         }
       }
-
-      .botton {
-        p {
-          margin-bottom: 8px;
-        }
-      }
     }
   }
 
   @media (max-width: 600px) {
     flex-direction: column;
     text-align: start;
-
-    .luz {
-      /* display: none; */
-    }
 
     .texto {
       align-items: center;
@@ -143,24 +108,6 @@ export const StylesHero = styled.div`
           height: 48px;
           font-size: 20px;
           margin: 0 auto;
-        }
-      }
-
-      .botton {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        display: none;
-
-        p {
-          margin-bottom: 8px;
-        }
-
-        .sociais {
-          gap: 16px;
         }
       }
     }

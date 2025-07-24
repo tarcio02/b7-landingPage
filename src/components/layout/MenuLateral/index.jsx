@@ -1,8 +1,21 @@
+import { useEffect } from "react";
 import ButtonForm from "../../ui/ButtonForm";
 import { Drawer, Lista } from "./styles";
 import { BotaoMobile } from "../../ui/ButtonForm/styles";
 
 const MenuLateral = ({ aberto, formularioRef, fechar }) => {
+  useEffect(() => {
+    if (aberto) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [aberto]);
+
   return (
     <Drawer $aberto={aberto}>
       <Lista>

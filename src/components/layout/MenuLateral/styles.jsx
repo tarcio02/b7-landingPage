@@ -17,7 +17,7 @@ export const Drawer = styled.div`
   flex-direction: column;
   padding: 32px 24px;
   transition: right 0.3s ease-in-out;
-  z-index: 998;
+  z-index: 999;
 `;
 
 export const Lista = styled.ul`

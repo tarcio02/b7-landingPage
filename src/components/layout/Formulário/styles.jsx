@@ -11,7 +11,7 @@ export const StylesFormulario = styled.div`
   border-radius: 24px;
   padding: 24px 32px;
   background-color: rgba(168, 38, 255, 0.1);
-  z-index: 999;
+  z-index: 998;
 
   h2 {
     font-size: 24px;

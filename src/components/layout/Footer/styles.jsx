@@ -4,7 +4,7 @@ import { theme } from "../../../styles/theme";
 export const StylesFooter = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 32px;
+  padding: 32px 64px;
   border-top: 1px solid white;
 
   .container {
@@ -48,6 +48,11 @@ export const StylesFooter = styled.div`
         }
       }
     }
+    .sociais {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
   }
 
   .copy {
@@ -74,7 +79,7 @@ export const StylesFooter = styled.div`
       }
 
       .sociais {
-        display: flex;
+        flex-direction: row;
         gap: 32px;
 
         img {
