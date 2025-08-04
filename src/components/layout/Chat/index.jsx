@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { StylesChat, RoboFlutuante, ButtonChat } from "./styles";
+import { StylesChat, RoboFlutuante } from "./styles";
 import robo from "../../../assets/icons/robogif.gif";
 
 const Chat = ({ onClose }) => {
@@ -90,9 +90,9 @@ const Chat = ({ onClose }) => {
           <div className="mensagem ia">Olá, como posso te ajudar?</div>
           <div className="sugestoes">
             {mensagensSugeridas.map((msg, i) => (
-              <ButtonChat key={i} onClick={() => setInput(msg)}>
+              <button key={i} onClick={() => setInput(msg)}>
                 {msg}
-              </ButtonChat>
+              </button>
             ))}
           </div>
           {mensagens.map((msg, i) => (

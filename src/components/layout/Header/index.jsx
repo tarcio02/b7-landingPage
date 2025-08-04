@@ -1,53 +1,61 @@
-import { StylesHeader } from "./styles";
+import { useState, useEffect } from "react";
+import * as S from "./styles";
 import logo from "../../../assets/images/logo.png";
 import MenuHamburguer from "../../ui/MenuHamburguer";
-import MenuLateral from "../MenuLateral";
-import { useState } from "react";
 import ButtonForm from "../../ui/ButtonForm";
-import { BotaoDesktop } from "../../ui/ButtonForm/styles";
+import { Desktop } from "../../../styles/Components/Responsivo";
+import NavBar from "../NavBar";
 
-const Header = ({ formularioRef }) => {
-  const [menuAberto, setMenuAberto] = useState(false);
+const Header = ({
+  formularioRef,
+  inicioRef,
+  metodologiaRef,
+  feedbackRef,
+  faqRef,
+  toggleMenu,
+  menuAberto,
+}) => {
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  const toggleMenu = () => {
-    setMenuAberto((prev) => !prev);
+  const controlHeader = () => {
+    if (window.scrollY > lastScrollY) {
+      setShowHeader(false); // rolando para baixo
+    } else {
+      setShowHeader(true); // rolando para cima
+    }
+    setLastScrollY(window.scrollY);
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", controlHeader);
+    return () => window.removeEventListener("scroll", controlHeader);
+  }, [lastScrollY]);
+
   return (
-    <StylesHeader>
-      <div className="logo">
-        <img src={logo} alt="logo b7" />
-      </div>
-      <div className="nav">
-        <ul>
-          <li>
-            <a href="#">Contato</a>
-          </li>
-          <li>
-            <a href="#">Início</a>
-          </li>
-          <li>
-            <a href="#">Sobre</a>
-          </li>
-          <li>
-            <a href="#">Serviços</a>
-          </li>
-          <li>
-            <a href="#">Resultados</a>
-          </li>
-          <li></li>
-        </ul>
-      </div>
-      <BotaoDesktop>
-        <ButtonForm texto="Agendar uma reunião" formularioRef={formularioRef} />
-      </BotaoDesktop>
+    <>
+      <S.StylesHeader className={showHeader ? "show" : "hide"}>
+        <S.logo>
+          <img src={logo} alt="Logo Branding7" />
+        </S.logo>
+        <Desktop>
+          <NavBar
+            formularioRef={formularioRef}
+            inicioRef={inicioRef}
+            metodologiaRef={metodologiaRef}
+            feedbackRef={feedbackRef}
+            faqRef={faqRef}
+          />
+        </Desktop>
+        <Desktop>
+          <ButtonForm
+            texto="Agendar uma reunião"
+            formularioRef={formularioRef}
+          />
+        </Desktop>
+      </S.StylesHeader>
       <MenuHamburguer menuAberto={menuAberto} toggleMenu={toggleMenu} />
-      <MenuLateral
-        aberto={menuAberto}
-        formularioRef={formularioRef}
-        fechar={() => setMenuAberto(false)}
-      />
-    </StylesHeader>
+    </>
   );
 };
 

@@ -8,16 +8,12 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
-  html {
-    scroll-padding-top: 200px; 
-    scroll-behavior: smooth;
-  }
-
-
     body{
       color: ${theme.colors.texto};
       font-family: ${theme.fonts.main};
-      background-color: ${theme.colors.secondary};
+      background: ${theme.colors.bgMain};
       width: 100%;
+      overflow-x: hidden;
+      padding-top: 72px; /* altura do header */
     }
 `;

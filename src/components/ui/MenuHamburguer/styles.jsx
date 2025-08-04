@@ -6,12 +6,23 @@ import { theme } from "../../../styles/theme";
 
 export const StylesMenuHamburguer = styled.div`
   display: none;
-  /* 1. Definimos um tamanho fixo para o contêiner e o tornamos um ponto de referência */
   width: 28px;
   height: 21px; /* (3px de altura da linha * 3) + (6px de gap * 2) = 21px */
   position: relative;
   cursor: pointer;
-  z-index: 999;
+  z-index: 1002;
+  position: fixed; /* 🔹 Agora está fora do fluxo do Header */
+  top: 24px; /* 🔹 Ajuste conforme a altura do Header (72px) */
+  right: 24px;
+  z-index: 1002; /* 🔹 Maior que o Drawer (1001) e Header (1000) */
+  transition: transform 0.3s ease;
+
+  &.hide {
+    transform: translateY(-220%);
+  }
+  &.show {
+    transform: translateY(0);
+  }
 
   .linha {
     width: 100%; /* Ocupa toda a largura do contêiner */

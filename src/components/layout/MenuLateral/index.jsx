@@ -1,47 +1,34 @@
-import { useEffect } from "react";
 import ButtonForm from "../../ui/ButtonForm";
-import { Drawer, Lista } from "./styles";
-import { BotaoMobile } from "../../ui/ButtonForm/styles";
+import { Drawer } from "./styles";
+import { Mobile } from "../../../styles/Components/Responsivo";
+import NavBar from "../NavBar";
 
-const MenuLateral = ({ aberto, formularioRef, fechar }) => {
-  useEffect(() => {
-    if (aberto) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [aberto]);
-
+const MenuLateral = ({
+  formularioRef,
+  inicioRef,
+  metodologiaRef,
+  feedbackRef,
+  faqRef,
+  aberto,
+  fechar,
+}) => {
   return (
     <Drawer $aberto={aberto}>
-      <Lista>
-        <li>
-          <a href="#">Início</a>
-        </li>
-        <li>
-          <a href="#">Sobre</a>
-        </li>
-        <li>
-          <a href="#">Serviços</a>
-        </li>
-        <li>
-          <a href="#">Resultados</a>
-        </li>
-        <li>
-          <a href="#">Contato</a>
-        </li>
-      </Lista>
-      <BotaoMobile>
+      <NavBar
+        fecharMenu={fechar}
+        formularioRef={formularioRef}
+        inicioRef={inicioRef}
+        metodologiaRef={metodologiaRef}
+        feedbackRef={feedbackRef}
+        faqRef={faqRef}
+      />
+      <Mobile>
         <ButtonForm
           texto="Agendar uma reunião"
           formularioRef={formularioRef}
           fecharMenu={fechar}
         />
-      </BotaoMobile>
+      </Mobile>
     </Drawer>
   );
 };

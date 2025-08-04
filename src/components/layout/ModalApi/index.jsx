@@ -19,7 +19,7 @@ const ModalApi = ({ show, onClose, message, isError = false }) => {
   return (
     <Backdrop>
       <ModalBox>
-        <Title error={isError}>{isError ? "Erro" : "#BoraVenderMais"}</Title>
+        <Title error={isError}>{isError ? "Erro" : "#BoraVender+"}</Title>
         <p>{message}</p>
         <Button error={isError} onClick={onClose}>
           Fechar

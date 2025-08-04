@@ -15,7 +15,7 @@ export const StylesWrapper = styled.div`
 export const StylesButtonChat = styled.div`
   display: flex;
   align-items: center;
-  background-color: ${theme.colors.primary};
+  background: ${theme.colors.buttonColorLinear};
   padding: 10px;
   gap: 8px;
   border-radius: 16px;
@@ -37,8 +37,14 @@ export const StylesButtonChat = styled.div`
     left: -45px;
   }
 
+  transition: transform 0.2s ease-in-out;
+
   &:hover {
-    opacity: 0.9;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 `;
 

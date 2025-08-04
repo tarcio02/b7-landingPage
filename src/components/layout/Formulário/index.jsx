@@ -1,10 +1,10 @@
-import { StylesFormulario } from "./styles";
 import { forwardRef, useState } from "react";
-import alertIcon from "../../../assets/icons/alerta.png";
-import luz from "../../../assets/images/luz.png";
-import Spinner from "../../designer/Spinner";
+import { StylesFormulario } from "./styles";
+import { supabase } from "../../../services/supabaseCLient.jsx";
+import Spinner from "../../ui/Spinner";
 import ModalApi from "../ModalApi";
-
+import alertIcon from "../../../assets/icons/alerta.png";
+import IconeSeta from "../../../assets/icons/iconesetadireita.png";
 const Formulario = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
     nome: "",
@@ -13,12 +13,7 @@ const Formulario = forwardRef((props, ref) => {
     colaboradores: "",
     whatsapp: "",
     area: "",
-    autor: {
-      dono: false,
-      administrador: false,
-      gerente: false,
-      colaborador: false,
-    },
+    autor: "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -33,16 +28,12 @@ const Formulario = forwardRef((props, ref) => {
 
   const formatarWhatsapp = (value) => {
     const numeros = value.replace(/\D/g, "");
-
-    if (numeros.length <= 2) {
-      return `(${numeros}`;
-    } else if (numeros.length <= 7) {
+    if (numeros.length <= 2) return `(${numeros}`;
+    if (numeros.length <= 7)
       return `(${numeros.slice(0, 2)}) ${numeros.slice(2)}`;
-    } else if (numeros.length <= 11) {
+    if (numeros.length <= 11)
       return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7)}`;
-    } else {
-      return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7, 11)}`;
-    }
+    return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7, 11)}`;
   };
 
   const showModal = (message, isError = false) => {
@@ -50,106 +41,71 @@ const Formulario = forwardRef((props, ref) => {
   };
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
 
     setErrors((prevErrors) => ({
       ...prevErrors,
       [name]: undefined,
     }));
 
-    if (type === "checkbox") {
-      setFormData((prevFormData) => {
-        const novoAutor = {
-          dono: false,
-          administrador: false,
-          gerente: false,
-          colaborador: false,
-          [name]: checked,
-        };
-        return {
-          ...prevFormData,
-          autor: novoAutor,
-        };
-      });
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        autor: undefined,
-      }));
-    } else {
-      const newValue = name === "whatsapp" ? formatarWhatsapp(value) : value;
+    const newValue = name === "whatsapp" ? formatarWhatsapp(value) : value;
 
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: newValue,
-      }));
-    }
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: newValue,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { nome, email, empresa, colaboradores, whatsapp, autor } = formData;
-    const newErrors = {};
-
-    if (!nome) newErrors.nome = "Nome é obrigatório.";
-    if (!email) newErrors.email = "Email é obrigatório.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s]+$/.test(email)) {
-      newErrors.email = "Email inválido";
-    }
-
-    if (!empresa) newErrors.empresa = "Nome da empresa é obrigatório.";
-
-    if (!colaboradores)
-      newErrors.colaboradores = "Informe a quantidade de colaborades.";
-    if (!whatsapp) newErrors.whatsapp = "Whatsapp é obrigatório.";
-    else if (!/^\d{9,}$/.test(whatsapp.replace(/\D/g, ""))) {
-      newErrors.whatsapp = "Número de whats inválido";
-    }
-
-    const autorSelecionados = Object.values(autor).filter((v) => v === true);
-    if (autorSelecionados.length !== 1) {
-      newErrors.autor = "Selecionade exatamente um perfil.";
-    }
-
-    setErrors(newErrors);
-    if (Object.keys(newErrors).length > 0) return;
+    const formatarNumeroBanco = (numero) => {
+      const apenasNumeros = numero.replace(/\D/g, "");
+      if (apenasNumeros.length < 10) return null;
+      const ddd = apenasNumeros.slice(0, 2);
+      let restante = apenasNumeros.slice(2);
+      restante = restante.slice(1); // Remove o primeiro dígito após o DDD
+      return `55${ddd}${restante}`;
+    };
 
     setIsLoading(true);
 
     try {
       const payload = {
         ...formData,
-        whatsapp: formData.whatsapp.replace(/\D/g, ""),
+        whatsapp: formatarNumeroBanco(formData.whatsapp),
       };
 
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwBoPFKAtz06qvTnoCjyP_bsDXFIxnV-LTxgOg1MDOwx5crAnPidJ84T3czF4pQMzfHHQ/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams({
-            dados: JSON.stringify(payload),
-          }),
-        }
-      );
+      const { error } = await supabase
+        .from("leads_formulario")
+        .insert([payload]);
 
-      if (response.ok) {
-        if (typeof fbq === "function") {
-          fbq("track", "Lead");
+      if (error) {
+        showModal("Erro ao enviar os dados. Tente novamente.", true);
+        console.error(error);
+      } else {
+        try {
+          await fetch(
+            "https://n8n-b7-n8n.xxer28.easypanel.host/webhook/lead_new",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            }
+          );
+        } catch (err) {
+          console.error("Erro ao enviar para o webhook:", err);
         }
 
+        if (typeof fbq === "function") fbq("track", "Lead");
         if (typeof window.spdt === "function") {
           window.spdt("custom_event_1", {
             nome: formData.nome,
             email: formData.email,
             empresa: formData.empresa,
           });
-          console.log("Spotify custom_event_1 enviado");
         }
 
-        setIsLoading(false);
         showModal("Obrigado, em breve entraremos em contato com você.", false);
 
         setFormData({
@@ -159,16 +115,9 @@ const Formulario = forwardRef((props, ref) => {
           colaboradores: "",
           whatsapp: "",
           area: "",
-          autor: {
-            dono: false,
-            administrador: false,
-            gerente: false,
-            colaborador: false,
-          },
+          autor: "",
         });
         setErrors({});
-      } else {
-        showModal("Erro ao enviar os dados. Tente novamente.", true);
       }
     } catch (err) {
       setIsLoading(false);
@@ -178,132 +127,167 @@ const Formulario = forwardRef((props, ref) => {
 
   return (
     <StylesFormulario>
-      <h2>
-        <span>PREENCHA O FORMULÁRIO </span>E FALE CONOSCO
-      </h2>
       <form ref={ref} onSubmit={handleSubmit}>
-        <input
-          className={`input-form ${errors.nome ? "error" : ""}`}
-          type="text"
-          placeholder="Qual o seu nome?"
-          name="nome"
-          value={formData.nome}
-          onChange={handleChange}
-        />
-        {errors.nome && (
-          <p className="error">
-            <img src={alertIcon} alt="verifique os dados preenchidos" />
-            {errors.nome}
+        <div>
+          <p className="label" htmlFor="nome">
+            Qual o seu nome?
           </p>
-        )}
-
-        <input
-          className={`input-form ${errors.empresa ? "error" : ""}`}
-          type="text"
-          placeholder="Nome da empresa"
-          name="empresa"
-          value={formData.empresa}
-          onChange={handleChange}
-        />
-        {errors.empresa && (
-          <p className="error">
-            <img src={alertIcon} alt="verifique os dados preenchidos" />
-            {errors.empresa}
-          </p>
-        )}
-
-        <input
-          className={`input-form ${errors.email ? "error" : ""}`}
-          type="email"
-          placeholder="Qual o seu melhor email?"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        {errors.email && (
-          <p className="error">
-            <img src={alertIcon} alt="verifique os dados preenchidos" />
-            {errors.email}
-          </p>
-        )}
-
-        <input
-          className={`input-form ${errors.colaboradores ? "error" : ""}`}
-          type="number"
-          placeholder="Você possuí quantos colaboradores?"
-          name="colaboradores"
-          value={formData.colaboradores}
-          onChange={handleChange}
-        />
-        {errors.colaboradores && (
-          <p className="error">
-            <img src={alertIcon} alt="verifique os dados preenchidos" />
-            {errors.colaboradores}
-          </p>
-        )}
-        <input
-          className={`input-form ${errors.whatsapp ? "error" : ""}`}
-          type="text"
-          placeholder="Qual o seu número de Whatsapp?"
-          name="whatsapp"
-          value={formData.whatsapp}
-          onChange={handleChange}
-        />
-        {errors.whatsapp && (
-          <p className="error">
-            <img src={alertIcon} alt="verifique os dados preenchidos" />
-            {errors.whatsapp}
-          </p>
-        )}
-        <input
-          className="input-form"
-          type="text"
-          placeholder="Área de atuação"
-          name="area"
-          value={formData.area}
-          onChange={handleChange}
-        />
-        <div className="check">
-          <h3>Selecione abaixo o seu perfil:</h3>
-          <div className="inputs">
-            {["administrador", "dono", "gerente", "colaborador"].map(
-              (perfil) => (
-                <div className="check-box" key={perfil}>
-                  <input
-                    type="checkbox"
-                    id={perfil}
-                    name={perfil}
-                    checked={formData.autor[perfil]}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor={perfil}>
-                    {perfil.charAt(0).toUpperCase() + perfil.slice(1)}
-                  </label>
-                </div>
-              )
-            )}
-          </div>
+          <input
+            className={`input-form ${errors.nome ? "error" : ""}`}
+            type="text"
+            placeholder="Digite seu nome completo"
+            name="nome"
+            id="nome"
+            value={formData.nome}
+            onChange={handleChange}
+          />
+          {errors.nome && (
+            <p className="error">
+              <img src={alertIcon} alt="verifique os dados preenchidos" />
+              {errors.nome}
+            </p>
+          )}
         </div>
+
+        <div>
+          <p className="label" htmlFor="empresa">
+            Qual o nome da empresa?
+          </p>
+          <input
+            className={`input-form ${errors.empresa ? "error" : ""}`}
+            type="text"
+            placeholder="Digite o nome da sua empresa"
+            name="empresa"
+            id="empresa"
+            value={formData.empresa}
+            onChange={handleChange}
+          />
+          {errors.empresa && (
+            <p className="error">
+              <img src={alertIcon} alt="verifique os dados preenchidos" />
+              {errors.empresa}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <p className="label" htmlFor="email">
+            Qual o seu email?
+          </p>
+          <input
+            className={`input-form ${errors.email ? "error" : ""}`}
+            type="email"
+            placeholder="seu@email.com"
+            name="email"
+            id="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && (
+            <p className="error">
+              <img src={alertIcon} alt="verifique os dados preenchidos" />
+              {errors.email}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <p className="label" htmlFor="colaboradores">
+            Sua empresa possui quantos colaboradores?
+          </p>
+          <input
+            className={`input-form ${errors.colaboradores ? "error" : ""}`}
+            type="number"
+            placeholder="Quantos colaboradores?"
+            name="colaboradores"
+            id="colaboradores"
+            value={formData.colaboradores}
+            onChange={handleChange}
+          />
+          {errors.colaboradores && (
+            <p className="error">
+              <img src={alertIcon} alt="verifique os dados preenchidos" />
+              {errors.colaboradores}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <p className="label" htmlFor="whatsapp">
+            Qual o seu whatsapp?
+          </p>
+          <input
+            className={`input-form ${errors.whatsapp ? "error" : ""}`}
+            type="text"
+            placeholder="(77) 99999-9999"
+            name="whatsapp"
+            id="whatsapp"
+            value={formData.whatsapp}
+            onChange={handleChange}
+          />
+          {errors.whatsapp && (
+            <p className="error">
+              <img src={alertIcon} alt="verifique os dados preenchidos" />
+              {errors.whatsapp}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <p className="label" htmlFor="area">
+            Qual a área de atuação de sua empresa?
+          </p>
+          <input
+            className="input-form"
+            type="text"
+            placeholder="Digite aqui seu segmento"
+            name="area"
+            id="area"
+            value={formData.area}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="autor">
+          <h3>Selecione abaixo o seu perfil:</h3>
+          <select
+            name="autor"
+            value={formData.autor}
+            onChange={handleChange}
+            className={`input-form ${errors.autor ? "error" : ""}`}
+          >
+            <option value="">Selecione...</option>
+            <option value="administrador">Administrador</option>
+            <option value="dono">Dono</option>
+            <option value="gerente">Gerente</option>
+            <option value="colaborador">Colaborador</option>
+          </select>
+        </div>
+
         {errors.autor && (
           <p className="error">
             <img src={alertIcon} alt="verifique os dados preenchidos" />
             {errors.autor}
           </p>
         )}
+
         {isLoading ? (
           <Spinner />
         ) : (
-          <button type="submit">Enviar para Análise</button>
+          <button type="submit">
+            <img src={IconeSeta} alt="icone" />
+            Enviar para Análise
+          </button>
         )}
       </form>
-      <img className="luz left" src={luz} alt="efeito de luz" />
       <ModalApi
         show={modalInfo.show}
         message={modalInfo.message}
         isError={modalInfo.isError}
-        onClose={() =>
-          setModalInfo({ show: false, message: "", isError: false })
-        }
+        onClose={() => {
+          setModalInfo({ show: false, message: "", isError: false });
+          setIsLoading(false);
+        }}
       />
     </StylesFormulario>
   );

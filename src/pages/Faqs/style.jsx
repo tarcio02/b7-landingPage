@@ -1,45 +1,53 @@
 import styled from "styled-components";
 import { theme } from "../../styles/theme";
-export const Titulo = styled.h2`
-  text-align: center;
-  margin: 16px 0;
-  padding-bottom: 16px;
-  font-size: 32px;
-  letter-spacing: 2px;
-  font-weight: bold;
-  color: ${theme.colors.texto};
-  /* text-decoration: underline; */
 
-  i {
-    margin-left: 8px;
-    color: ${theme.colors.primary};
+export const FAQContainer = styled.div`
+  padding: 64px ${theme.espaces.mobileUm};
+  background: ${theme.colors.bgUm};
+
+  @media (min-width: 601px) {
+    padding: 64px ${theme.espaces.mobileDois};
   }
 
-  span {
-    color: ${theme.colors.primary};
+  @media (min-width: 769px) {
+    padding: 80px ${theme.espaces.desktop};
   }
 `;
 
-// Estilos principais
-export const FAQContainer = styled.div`
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 40px;
-  border-top: 1px solid ${theme.colors.primary};
+export const Titulo = styled.h2`
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 8px;
+  padding: 0;
+`;
+
+export const Paragrafo = styled.p`
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #d1d5dc;
+  margin-bottom: 40px;
 `;
 
 export const Question = styled.div`
-  background: ${theme.colors.buttonColor};
   padding: 15px 20px;
-  margin-bottom: 16px;
   border-radius: 8px;
+  width: 100%;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  height: 120px;
+  margin: 12px auto;
+
+  @media (min-width: 769px) {
+    width: 720px;
+  }
 `;
 
 export const QuestionText = styled.span`
@@ -49,20 +57,25 @@ export const QuestionText = styled.span`
 `;
 
 export const Answer = styled.div`
-  background: black;
+  background: rgba(0, 0, 0, 0.2);
   padding: 0 20px;
-  margin-bottom: 10px;
   border: 1px solid #dee2e6;
+  width: 100%;
   border-radius: 8px;
   line-height: 24px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   max-height: 0;
   opacity: 0;
+  margin: 0 auto;
   overflow: hidden;
   transition:
     max-height 0.4s ease,
     opacity 0.3s ease,
     padding 0.4s ease;
+
+  @media (min-width: 769px) {
+    width: 720px;
+  }
 `;
 
 export const AnswerWrapper = styled.div`

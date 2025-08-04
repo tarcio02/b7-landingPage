@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import {
   FAQContainer,
   Question,
@@ -7,9 +7,10 @@ import {
   AnswerWrapper,
   Icon,
   Titulo,
+  Paragrafo,
 } from "./style";
 
-const FAQ = () => {
+const FAQ = forwardRef((props, ref) => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleQuestion = (index) => {
@@ -79,11 +80,9 @@ const FAQ = () => {
   ];
 
   return (
-    <FAQContainer>
-      <Titulo>
-        <span>PERGUNTAS</span> FREQUENTES
-        <i className="fa-solid fa-person-circle-question"></i>
-      </Titulo>
+    <FAQContainer ref={ref}>
+      <Titulo>Perguntas Frequentes</Titulo>
+      <Paragrafo>Tire suas dúvidas sobre o método B7- 3X</Paragrafo>
       {faqItems.map((item, index) => (
         <div key={index}>
           <Question onClick={() => toggleQuestion(index)}>
@@ -101,6 +100,6 @@ const FAQ = () => {
       ))}
     </FAQContainer>
   );
-};
+});
 
 export default FAQ;

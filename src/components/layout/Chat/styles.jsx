@@ -32,12 +32,15 @@ export const StylesChat = styled.div`
   flex-direction: column;
   overflow: hidden;
   font-family: sans-serif;
-  background-color: ${theme.colors.secondary};
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
   opacity: 1;
   transform: scale(1);
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   &.fechando {
     opacity: 0;
@@ -49,7 +52,11 @@ export const StylesChat = styled.div`
     justify-content: end;
     align-items: center;
     padding: 8px 12px;
-    background: ${theme.colors.primary};
+    background: linear-gradient(
+      to right,
+      rgba(152, 16, 250, 1) 0%,
+      rgba(230, 0, 118, 1) 100%
+    );
 
     .fechar {
       background: none;
@@ -70,10 +77,34 @@ export const StylesChat = styled.div`
   .sugestoes {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
     gap: 10px;
-    padding: 16px;
+    padding: 10px;
+    /* background: white; */
+
+    button {
+      background: linear-gradient(
+        to right,
+        rgba(152, 16, 250, 1) 0%,
+        rgba(230, 0, 118, 1) 100%
+      );
+
+      border: none;
+      color: white;
+      border-radius: 10px;
+      padding: 8px;
+      font-size: 13px;
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
   }
 
   .mensagem {
@@ -84,13 +115,13 @@ export const StylesChat = styled.div`
   }
 
   .mensagem.usuario {
-    background-color: ${theme.colors.primary};
+    background-color: rgba(230, 0, 118, 8);
     align-self: flex-end;
   }
 
   .mensagem.ia {
     /* background-color: ${theme.colors.primary}; */
-    background-color: rgba(168, 38, 255, 0.4);
+    background-color: rgba(152, 16, 250, 1);
 
     align-self: flex-start;
   }
@@ -98,7 +129,11 @@ export const StylesChat = styled.div`
   .entrada {
     display: flex;
     padding: 8px;
-    background: ${theme.colors.primary};
+    background: linear-gradient(
+      to right,
+      rgba(152, 16, 250, 1) 0%,
+      rgba(230, 0, 118, 1) 100%
+    );
 
     input {
       flex: 1;
@@ -112,52 +147,20 @@ export const StylesChat = styled.div`
     button {
       margin-left: 8px;
       padding: 8px 12px;
-      background: ${theme.colors.buttonColor};
+      background-color: rgba(168, 38, 255, 1);
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
     }
-  }
-`;
-
-export const ButtonChat = styled.button`
-  text-align: center;
-  text-decoration: none;
-  overflow: hidden;
-  position: relative;
-  padding: 4px;
-  font-size: 16px;
-  width: 100%;
-  background: ${theme.colors.buttonColor};
-  color: ${theme.colors.texto};
-  border: 1px solid ${theme.colors.primary};
-  border-radius: 16px;
-  cursor: pointer;
-  z-index: 0;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-    background: ${theme.colors.texto};
-    z-index: -1;
-    border-radius: 16px;
-    transition: width 0.4s ease;
-  }
-
-  &:hover::before {
-    width: 100%;
-  }
-
-  &:hover {
-    color: ${theme.colors.primary};
-  }
-
-  &:active {
-    border-radius: 16px;
   }
 `;

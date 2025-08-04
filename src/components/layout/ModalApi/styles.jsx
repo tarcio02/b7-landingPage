@@ -17,7 +17,7 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,11 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalBox = styled.div`
-  background: ${theme.colors.buttonColor};
+  background: linear-gradient(
+    to right,
+    rgba(152, 16, 250, 1) 0%,
+    rgba(230, 0, 118, 1) 100%
+  );
   padding: 30px 25px;
   border-radius: 12px;
   text-align: center;

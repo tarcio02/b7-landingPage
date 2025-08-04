@@ -1,4 +1,5 @@
-import { StylesButtonForm } from "./styles";
+import { StylesButtonGradiente } from "../../../styles/Components/ButtonGradiente";
+import calendar from "../../../assets/icons/calendar.png";
 
 const ButtonForm = ({ texto, formularioRef, fecharMenu }) => {
   const handleClick = (e) => {
@@ -7,7 +8,7 @@ const ButtonForm = ({ texto, formularioRef, fecharMenu }) => {
     if (formularioRef?.current) {
       formularioRef.current.scrollIntoView({
         behavior: "smooth",
-        block: "end",
+        block: "start",
       });
     }
 
@@ -16,7 +17,12 @@ const ButtonForm = ({ texto, formularioRef, fecharMenu }) => {
     }
   };
 
-  return <StylesButtonForm onClick={handleClick}>{texto}</StylesButtonForm>;
+  return (
+    <StylesButtonGradiente onClick={handleClick}>
+      <img src={calendar} alt="formulário" />
+      {texto}
+    </StylesButtonGradiente>
+  );
 };
 
 export default ButtonForm;
