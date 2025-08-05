@@ -15,5 +15,7 @@ export const GlobalStyles = createGlobalStyle`
       width: 100%;
       overflow-x: hidden;
       padding-top: 72px; /* altura do header */
+      overflow-x: hidden;
+      max-width: 100%;
     }
 `;

@@ -52,7 +52,7 @@ export const StylesTutorial = styled.div`
     .container {
       justify-content: center;
       flex-wrap: nowrap;
-      /* gap: 64px; */
+      width: 1000px;
     }
   }
 `;
@@ -86,6 +86,7 @@ export const Acao = styled.div`
     height: 64px;
     background: linear-gradient(to right, #9810fa, #e60076);
     animation: ${float} 1.5s ease-in-out infinite;
+    cursor: pointer;
   }
 
   .nome {

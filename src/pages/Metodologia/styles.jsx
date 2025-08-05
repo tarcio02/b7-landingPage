@@ -16,26 +16,22 @@ export const StylesMetodologia = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 100%;
     gap: 24px;
   }
 
   @media (min-width: 601px) {
     padding: 64px ${theme.espaces.mobileDois};
-
-    .container {
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-      gap: 0;
-    }
   }
 
   @media (min-width: 769px) {
     padding: 80px ${theme.espaces.desktop};
 
     .container {
+      flex-direction: row;
       justify-content: center;
       gap: 32px;
+      width: 100%;
     }
   }
 `;
@@ -55,24 +51,60 @@ export const Paragrafo = styled.p`
 `;
 
 export const CardMetodo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  padding: 16px 24px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  text-align: center;
+  perspective: 1000px;
+  width: 100%;
+  height: 320px;
+  position: relative;
 
-  transition: transform 0.2s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+    transform: ${({ $virado }) => ($virado ? "rotateY(180deg)" : "none")};
   }
 
-  &:active {
-    transform: scale(0.98);
+  .card-front,
+  .card-back {
+    position: absolute;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 16px;
+    text-align: center;
+    /* gap: 16px; */
+  }
+
+  .card-front {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(
+      to right,
+      rgba(152, 16, 250, 1) 0%,
+      rgba(230, 0, 118, 1) 100%
+    );
+  }
+
+  .titulo {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .descricao {
+    font-size: 14px;
+    line-height: 20px;
+    width: 100%;
+    color: #dab2ff;
   }
 
   .icone {
@@ -93,30 +125,76 @@ export const CardMetodo = styled.div`
     }
   }
 
-  .titulo {
-    font-size: 18px;
-    line-height: 20px;
-    /* width: 280px; */
-  }
-
-  .descricao {
-    font-size: 14px;
-    line-height: 20px;
-    width: 280px;
-    color: #dab2ff;
-  }
-
-  @media (min-width: 601px) {
-    padding: 8px;
-    height: 320px;
-
-    .titulo,
-    .descricao {
-      width: auto;
+  .lista {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    gap: 8px;
+    width: 100%;
+    li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      list-style: none;
+      font-weight: bold;
     }
   }
 
+  .imagem-li {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative;
+
+    img {
+      width: 24px;
+      position: absolute;
+      top: -4px;
+      right: -6px;
+    }
+  }
+
+  .botao {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .botao-front {
+    background: linear-gradient(
+      to right,
+      rgba(173, 70, 255, 0.2),
+      rgba(246, 51, 154, 0.2)
+    );
+  }
+
+  .botao-back {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  @media (min-width: 601px) {
+    height: 360px;
+    width: 360px;
+  }
+
   @media (min-width: 769px) {
-    height: 280px;
+    height: 340px;
+    width: 280px;
   }
 `;

@@ -6,7 +6,6 @@ import Etiqueta from "../../components/layout/Etiqueta";
 import iconeFoguete from "../../assets/icons/foguete.png";
 import iconeRaio from "../../assets/icons/iconeRaio.png";
 import iconePlay from "../../assets/icons/iconePlay.png";
-import iconeEstrela from "../../assets/icons/iconeEstrela.png";
 import iconeEspiral from "../../assets/icons/iconeEspiral.png";
 import iconeGrafico from "../../assets/icons/iconeGrafico.png";
 import banner from "../../assets/images/bannerInicio.png";
@@ -89,9 +88,12 @@ const Inicio = forwardRef((props, ref) => {
       return () => clearInterval(intervalo);
     }, [partes]);
 
-    // ✅ Aqui está o retorno que faltava!
     return (
-      <S.Titulo style={{ position: "relative" }} data-aos="fade-right">
+      <S.Titulo
+        style={{ position: "relative" }}
+        data-aos="fade-right"
+        data-aos-once="true"
+      >
         {/* Reserva o espaço do texto completo */}
         <div style={{ visibility: "hidden" }}>
           {partes.map((parte, idx) =>
@@ -210,7 +212,11 @@ const Inicio = forwardRef((props, ref) => {
             { texto: "90 DIAS", classe: "tempo" },
           ]}
         />
-        <S.Paragrafo data-aos="fade-right" data-aos-delay="2000">
+        <S.Paragrafo
+          data-aos="fade-right"
+          data-aos-delay="2000"
+          data-aos-once="true"
+        >
           Do tráfego pago ao atendimento automatizado com IA. Somos a agência
           que conecta{" "}
           <span className="bold">estratégia, criatividade e vendas</span> para
@@ -219,22 +225,28 @@ const Inicio = forwardRef((props, ref) => {
         <div className="buttons">
           <S.Botao
             data-aos="fade-left"
-            data-aos-delay="3000"
+            data-aos-delay="1000"
+            data-aos-once="true"
             primary
             onClick={handleClick}
           >
             <img src={iconeRaio} alt="icone" />
             Quero Vender Mais
           </S.Botao>
-          <S.Botao data-aos="fade-left" data-aos-delay="3000">
+          <S.Botao
+            data-aos="fade-left"
+            data-aos-delay="1000"
+            data-aos-once="true"
+          >
             <img src={iconePlay} alt="icone" />
             Ver Como Funciona
           </S.Botao>
         </div>
         <S.Metricas
           data-aos="fade-left"
-          data-aos-delay={displayFlex ? "0" : "3000"}
           data-aos-offset="0"
+          data-aos-delay="1000"
+          data-aos-once="true"
         >
           <div className="dado">
             <Contador valorFinal={90} />

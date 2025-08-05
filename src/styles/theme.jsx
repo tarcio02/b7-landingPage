@@ -14,6 +14,6 @@ export const theme = {
   espaces: {
     mobileUm: "16px",
     mobileDois: "32px",
-    desktop: "40px",
+    desktop: "56px",
   },
 };

@@ -29,16 +29,16 @@ const Cliente = () => {
         </S.paragrafo>
       </div>
       <div className="container">
-        {clientes.map((cliente) => {
+        {clientes.map((cliente, index) => {
           return (
-            <S.CardCliente>
+            <S.CardCliente key={`cliente-a-${index}`}>
               <img className="cliente" src={cliente} alt="logo cliente" />
             </S.CardCliente>
           );
         })}
-        {clientes.map((cliente) => {
+        {clientes.map((cliente, index) => {
           return (
-            <S.CardCliente>
+            <S.CardCliente key={`cliente-b-${index}`}>
               <img className="cliente" src={cliente} alt="logo cliente" />
             </S.CardCliente>
           );

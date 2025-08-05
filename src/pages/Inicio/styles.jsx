@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
 import { theme } from "../../styles/theme";
-import { fadeIn } from "../../styles/Components/EfeitosEstilos";
 
 export const StylesInicio = styled.div`
   display: flex;
@@ -28,7 +27,8 @@ export const StylesInicio = styled.div`
 
   @media (min-width: 769px) {
     padding: 80px ${theme.espaces.desktop};
-    justify-content: start;
+    justify-content: center;
+    gap: 120px;
     flex-direction: row;
   }
 `;
@@ -48,8 +48,7 @@ export const Texto = styled.div`
   }
 
   @media (min-width: 769px) {
-    width: 1100px;
-    /* border: 1px solid red; */
+    width: 600px;
   }
 `;
 
@@ -175,11 +174,10 @@ export const Metricas = styled.div`
 `;
 
 export const Banner = styled.div`
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 70%;
   .banner {
     width: 100%;
   }
@@ -214,7 +212,8 @@ export const Banner = styled.div`
   }
 
   @media (min-width: 769px) {
-    width: 100%;
+    /* width: 100%; */
+
     .rigth {
       right: 30px;
       bottom: 50%;

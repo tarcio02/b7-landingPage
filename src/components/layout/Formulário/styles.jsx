@@ -29,7 +29,11 @@ export const StylesFormulario = styled.div`
       border-radius: 9px;
       font-size: 16px;
       margin-top: 8px;
-      color: #99a1af;
+      color: #fffde7;
+
+      &::placeholder {
+        color: #fffde7;
+      }
     }
 
     .label {
@@ -95,6 +99,6 @@ export const StylesFormulario = styled.div`
   }
 
   @media (min-width: 601px) {
-    width: 576px;
+    width: 460px;
   }
 `;

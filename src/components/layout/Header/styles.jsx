@@ -10,7 +10,7 @@ export const StylesHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 72px;
-  padding: ${theme.espaces.mobileUm};
+  padding: 16px ${theme.espaces.mobileUm};
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -25,11 +25,11 @@ export const StylesHeader = styled.div`
   }
 
   @media (min-width: 601px) {
-    padding: ${theme.espaces.mobileDois};
+    padding: 16px ${theme.espaces.mobileDois};
   }
 
   @media (min-width: 769px) {
-    padding: ${theme.espaces.desktop};
+    padding: 40px ${theme.espaces.desktop};
   }
 `;
 

@@ -11,7 +11,7 @@ to{
 }
 `;
 
-export const Backdrop = styled.div`
+export const StylesModalTutorial = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -25,6 +25,11 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
   background: linear-gradient(
     to right,
     rgba(152, 16, 250, 1) 0%,
@@ -33,26 +38,29 @@ export const ModalBox = styled.div`
   padding: 30px 25px;
   border-radius: 12px;
   text-align: center;
+  position: relative;
   width: 90%;
   max-width: 400px;
   animation: ${fadeIn} 0.2s ease-out;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
 `;
 
-export const Title = styled.h3`
-  letter-spacing: 1px;
-  font-weight: bold;
-  margin-bottom: 12px;
-  color: ${({ error }) => (error ? "#d9534f" : "#fff")};
+export const Numero = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 `;
 
-export const Button = styled.button`
-  background-color: ${({ error }) => (error ? "#d9534f" : "#28a745")};
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 20px;
-  font-weight: bold;
+export const Titulo = styled.h3`
+  font-size: 24px;
+`;
+
+export const Descricao = styled.p`
+  font-size: 16px;
+  line-height: 20px;
 `;
