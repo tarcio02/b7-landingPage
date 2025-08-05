@@ -2,35 +2,9 @@ import { forwardRef, useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import * as S from "./styles";
-import iconeEstrela from "../../assets/icons/iconeestrela2.png";
+import iconeEstrela from "../../assets/icons/iconeEstrela2.png";
 
 const Feedback = forwardRef((props, ref) => {
-  const [displayFlex, setDisplayFlex] = useState(false);
-
-  function atualizarDisplayFlex() {
-    if (window.innerWidth >= 600) {
-      setDisplayFlex(true);
-    } else {
-      setDisplayFlex(false);
-    }
-  }
-
-  useEffect(() => {
-    // Atualiza o estado ao montar o componente
-    atualizarDisplayFlex(setDisplayFlex);
-
-    // Atualiza o estado ao redimensionar a janela
-    function handleResize() {
-      atualizarDisplayFlex(setDisplayFlex);
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   useEffect(() => {
     AOS.init({
       duration: 1000, // Duração das animações em milissegundos
