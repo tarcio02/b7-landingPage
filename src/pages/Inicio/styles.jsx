@@ -178,6 +178,8 @@ export const Banner = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  overflow: hidden;
+
   .banner {
     width: 100%;
   }
@@ -198,12 +200,12 @@ export const Banner = styled.div`
   }
 
   .rigth {
-    right: 10px;
+    right: -20px;
     bottom: 50%;
   }
 
   .left {
-    left: 20px;
+    left: -20px;
     top: -10px;
   }
 
