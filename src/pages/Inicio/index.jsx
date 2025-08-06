@@ -263,7 +263,7 @@ const Inicio = forwardRef((props, ref) => {
         </S.Metricas>
       </S.Texto>
       {/* banner e detalhes */}
-      {/* <S.Banner>
+      <S.Banner>
         <div className="detalhe left">
           <img className="imageDetalhe" src={iconeGrafico} alt="icone" />
         </div>
@@ -271,7 +271,7 @@ const Inicio = forwardRef((props, ref) => {
         <div className="detalhe rigth">
           <img className="imageDetalhe" src={iconeEspiral} alt="caracol" />
         </div>
-      </S.Banner> */}
+      </S.Banner>
     </S.StylesInicio>
   );
 });
