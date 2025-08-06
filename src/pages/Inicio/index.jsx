@@ -263,7 +263,7 @@ const Inicio = forwardRef((props, ref) => {
         </S.Metricas>
       </S.Texto>
       {/* banner e detalhes */}
-      <S.Banner>
+      <S.Banner data-aos="fade-right" data-aos-once="true">
         <div className="detalhe left">
           <img className="imageDetalhe" src={iconeGrafico} alt="icone" />
         </div>
