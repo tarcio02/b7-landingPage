@@ -64,7 +64,7 @@ function App() {
         faqRef={faqRef}
       />
       <Inicio ref={inicioRef} formularioRef={formularioRef} />
-      <Cliente />
+      {/* <Cliente /> */}
       <Metodologia ref={metodologiaRef} />
       <Tutorial />
       <FormContato ref={formularioRef} />
