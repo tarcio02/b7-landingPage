@@ -175,14 +175,27 @@ export const Metricas = styled.div`
 `;
 
 export const Banner = styled.div`
-  position: relative;
-  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 70%;
+  width: 100%;
   overflow: hidden;
 
   .banner {
     width: 100%;
+    max-width: 70%; /* controla o tamanho real da imagem */
+  }
+
+  .left {
+    left: 20px;
+    left: 0;
+  }
+
+  .rigth {
+    right: 10px;
+    right: 0;
   }
 
   .detalhe {
@@ -198,16 +211,6 @@ export const Banner = styled.div`
 
   .imageDetalhe {
     width: 24px;
-  }
-
-  .rigth {
-    right: -20px;
-    bottom: 50%;
-  }
-
-  .left {
-    left: -20px;
-    top: -10px;
   }
 
   @media (min-width: 601px) {
