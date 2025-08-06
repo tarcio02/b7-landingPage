@@ -6,16 +6,24 @@ const MenuHamburguer = ({ menuAberto, toggleMenu }) => {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const controlHeader = () => {
-    if (window.scrollY > lastScrollY) {
-      setShowHeader(false); // rolando para baixo
-    } else {
-      setShowHeader(true); // rolando para cima
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY <= 0) {
+      // Está no topo da página — mostrar o header sempre
+      setShowHeader(true);
+    } else if (currentScrollY > lastScrollY) {
+      // Scroll para baixo — esconder header
+      setShowHeader(false);
+    } else if (currentScrollY < lastScrollY) {
+      // Scroll para cima — mostrar header
+      setShowHeader(true);
     }
-    setLastScrollY(window.scrollY);
+
+    setLastScrollY(currentScrollY);
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", controlHeader);
+    window.addEventListener("scroll", controlHeader, { passive: true });
     return () => window.removeEventListener("scroll", controlHeader);
   }, [lastScrollY]);
 
