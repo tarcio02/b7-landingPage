@@ -9,6 +9,7 @@ export const StylesInicio = styled.div`
   gap: 16px;
   padding: 64px ${theme.espaces.mobileUm};
   background: ${theme.colors.bgUm};
+  overflow: hidden;
 
   .buttons {
     display: flex;
