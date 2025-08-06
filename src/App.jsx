@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import Header from "./components/layout/Header";
-import MenuLateral from ".//components/layout/MenuLateral";
+import MenuLateral from "./components/layout/MenuLateral";
 import Inicio from "./pages/Inicio";
 import Cliente from "./pages/Clientes";
 import Metodologia from "./pages/Metodologia";

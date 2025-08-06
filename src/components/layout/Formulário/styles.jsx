@@ -29,7 +29,6 @@ export const StylesFormulario = styled.div`
       border-radius: 9px;
       font-size: 16px;
       margin-top: 8px;
-      color: #fffde7;
 
       &::placeholder {
         color: #fffde7;
@@ -48,8 +47,31 @@ export const StylesFormulario = styled.div`
         line-height: 14px;
         margin-bottom: 4px;
       }
-      select {
+      .select-form.custom-select {
         width: 50%;
+        padding: 13px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 9px;
+        outline: none;
+        font-size: 16px;
+      }
+
+      .select-form.custom-select.placeholder {
+        color: white; /* placeholder branco */
+        width: 50%;
+      }
+
+      .select-form.custom-select.filled {
+        color: black; /* opções selecionadas pretas */
+      }
+
+      .select-form.custom-select option {
+        color: black; /* opções visíveis no dropdown */
+      }
+
+      .select-form.custom-select option[value=""] {
+        color: white; /* somente o placeholder */
       }
     }
 

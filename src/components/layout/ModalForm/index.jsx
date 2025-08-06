@@ -4,6 +4,9 @@ import CloseButton from "../../ui/CloseButton";
 import Formulario from "../Formulário";
 
 const ModalForm = ({ onClose, show }) => {
+  const webHook =
+    "https://n8n-b7-n8n.xxer28.easypanel.host/webhook/Ebook_Whatsapp";
+
   useEffect(() => {
     if (show) {
       document.body.style.overflow = "hidden";
@@ -24,7 +27,7 @@ const ModalForm = ({ onClose, show }) => {
         <CloseButton onClick={onClose} />
         <S.ModalContent>
           <S.Titulo>Preencha o Fomulário Para Resgatar o E-book</S.Titulo>
-          <Formulario />
+          <Formulario webHook={webHook} />
         </S.ModalContent>
       </S.ModalBox>
     </S.StylesModalForm>

@@ -8,14 +8,17 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+
     body{
       color: ${theme.colors.texto};
       font-family: ${theme.fonts.main};
       background: ${theme.colors.bgMain};
-      width: 100%;
-      overflow-x: hidden;
       padding-top: 72px; /* altura do header */
-      overflow-x: hidden;
       max-width: 100%;
     }
 `;

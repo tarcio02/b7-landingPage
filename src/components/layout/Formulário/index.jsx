@@ -6,7 +6,7 @@ import ModalApi from "../ModalApi";
 import alertIcon from "../../../assets/icons/alerta.png";
 import IconeSeta from "../../../assets/icons/iconesetadireita.png";
 
-const Formulario = forwardRef((props, ref) => {
+const Formulario = forwardRef((props, ref, webHook) => {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -86,14 +86,11 @@ const Formulario = forwardRef((props, ref) => {
         console.error(error);
       } else {
         try {
-          await fetch(
-            "https://n8n-b7-n8n.xxer28.easypanel.host/webhook/lead_new",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload),
-            }
-          );
+          await fetch(webHook, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
         } catch (err) {
           console.error("Erro ao enviar para o webhook:", err);
         }
@@ -252,16 +249,16 @@ const Formulario = forwardRef((props, ref) => {
         <div className="autor">
           <h3>Selecione abaixo o seu perfil:</h3>
           <select
-            name="autor"
-            value={formData.autor}
-            onChange={handleChange}
-            className={`input-form ${errors.autor ? "error" : ""}`}
+            className={`select-form custom-select ${
+              formData.autor === "" ? "placeholder" : "filled"
+            } ${errors.autor ? "error" : ""}`}
           >
+            {/* <option value=""></option> */}
             <option value="">Selecione...</option>
-            <option value="administrador">Administrador</option>
             <option value="dono">Dono</option>
             <option value="gerente">Gerente</option>
             <option value="colaborador">Colaborador</option>
+            <option value="administrador">Administrador</option>
           </select>
         </div>
 

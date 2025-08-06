@@ -5,7 +5,7 @@ export const StylesFooter = styled.div`
   padding: 64px ${theme.espaces.mobileUm};
   background-color: rgba(0, 0, 0, 0.2);
   @media (min-width: 601px) {
-    padding: 64px ${theme.espaces.mobileUm};
+    padding: 64px ${theme.espaces.mobileDois};
     .container {
       display: flex;
       justify-content: space-between;
