@@ -63,7 +63,7 @@ function App() {
         feedbackRef={feedbackRef}
         faqRef={faqRef}
       />
-      <Inicio ref={inicioRef} formularioRef={formularioRef} />
+      {/* <Inicio ref={inicioRef} formularioRef={formularioRef} /> */}
       {/* <Cliente /> */}
       <Metodologia ref={metodologiaRef} />
       <Tutorial />
