@@ -23,9 +23,8 @@ export const StylesClientes = styled.div`
   .container {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 16px;
-    width: 100%;
+    width: max-content; /* permite o conteúdo rolar sem ultrapassar a tela */
     animation: ${scroll} 30s linear infinite;
   }
 
